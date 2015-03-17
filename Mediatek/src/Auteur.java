@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-
-
 public class Auteur {
 	private String nom ;
 	private String prenom ;
