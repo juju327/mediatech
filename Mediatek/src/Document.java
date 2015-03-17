@@ -5,9 +5,7 @@ public abstract class Document {
 	private String reference ;
 	private int dureeMax ;
 	private int nbMax ;
-	
-	
-	
+
 	public Document(String titre, String dateParution, String reference,
 			int dureeMax, int nbMax) {
 		setTitre(titre);
@@ -57,6 +55,6 @@ public abstract class Document {
 		this.nbMax = nbMax;
 	}
 	
-
+	
 	
 }
