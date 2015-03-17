@@ -52,7 +52,6 @@ public class Abonné {
 	private void setNumero(String numero) {
 		this.numero = numero;
 	}
-	
 	public ArrayList<Emprunt> getEmprunts() {
 		return emprunts;
 	}
@@ -65,16 +64,16 @@ public class Abonné {
 	 * ajoute le document doc à la liste des emprunts de cet abonné
 	 * @param doc le document à emprunter
 	 */
-	public void emprunter(Emprunt doc){
-		emprunts.add(doc);
+	public void emprunter(Emprunt emprunt){
+		emprunts.add(emprunt);
 	}
 	
 	/**
 	 * enlève le document doc de la liste des emprunts de cet abonné
 	 * @param doc le document à rendre
 	 */
-	public void rendre(Emprunt doc){
-		emprunts.remove(doc);
+	public void rendre(Emprunt emprunt){
+		emprunts.remove(emprunt);
 	}
 
 }
