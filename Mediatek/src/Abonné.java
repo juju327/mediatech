@@ -9,7 +9,17 @@ public class Abonné {
 	private String adresse;
 	private Date dateNaissance;
 	private String numero;
-	private ArrayList<Document> emprunts;
+	private ArrayList<Emprunt> emprunts;
+	
+	// constructeur
+	public Abonné(String nom, String prenom, String adresse, Date date, String num){
+		setNom(nom);
+		setPrenom(prenom);
+		setAdresse(adresse);
+		setDateNaissance(date);
+		setNumero(num);
+		emprunts = new ArrayList<Emprunt>();
+	}
 	
 	// getters & setters
 	public String getNom() {
@@ -43,13 +53,28 @@ public class Abonné {
 		this.numero = numero;
 	}
 	
-	public ArrayList<Document> getEmprunts() {
+	public ArrayList<Emprunt> getEmprunts() {
 		return emprunts;
 	}
-	private void setEmprunts(ArrayList<Document> emprunts) {
+	private void setEmprunts(ArrayList<Emprunt> emprunts) {
 		this.emprunts = emprunts;
 	}
 	
 	// méthodes
+	/**
+	 * ajoute le document doc à la liste des emprunts de cet abonné
+	 * @param doc le document à emprunter
+	 */
+	public void emprunter(Emprunt doc){
+		emprunts.add(doc);
+	}
+	
+	/**
+	 * enlève le document doc de la liste des emprunts de cet abonné
+	 * @param doc le document à rendre
+	 */
+	public void rendre(Emprunt doc){
+		emprunts.remove(doc);
+	}
 
 }
