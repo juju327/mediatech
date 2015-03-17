@@ -7,6 +7,16 @@ public abstract class Document {
 	private int nbMax ;
 	
 	
+	
+	public Document(String titre, String dateParution, String reference,
+			int dureeMax, int nbMax) {
+		setTitre(titre);
+		setDateParution(dateParution);
+		setReference(reference);
+		setDureeMax(dureeMax);
+		setNbMax(nbMax);
+	}
+
 	public String getTitre() {
 		return titre;
 	}
@@ -47,5 +57,6 @@ public abstract class Document {
 		this.nbMax = nbMax;
 	}
 	
+
 	
 }
