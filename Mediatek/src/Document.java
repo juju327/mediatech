@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 public abstract class Document {
 	private String titre ;
@@ -6,6 +8,7 @@ public abstract class Document {
 	private int dureeMax ;
 	private int nbMax ;
 	
+	private ArrayList<Auteur> estPubliePar;
 
 	public Document(String titre, String dateParution, String reference,
 			int dureeMax, int nbMax) {
@@ -14,6 +17,7 @@ public abstract class Document {
 		setReference(reference);
 		setDureeMax(dureeMax);
 		setNbMax(nbMax);
+		estPubliePar = new ArrayList<Auteur>();
 	}
 
 	public String getTitre() {
@@ -54,6 +58,27 @@ public abstract class Document {
 	
 	private void setNbMax(int nbMax) {
 		this.nbMax = nbMax;
+	}
+
+	//Pour la liste des auteurs estPubliePar 
+	public ArrayList<Auteur> getEstPubliePar() {
+		return estPubliePar;
+	}
+	
+	/**
+	 * Ajoute un auteur au document 
+	 * @param auteur : Auteur (qui a publié le livre)
+	 */
+	public void addAuteur(Auteur auteur){
+		getEstPubliePar().add(auteur);
+	}
+	
+	/**
+	 * Supprimer un auteur du document
+	 * @param auteur : Auteur (qui a publié le livre)
+	 */
+	public void removeAuteur(Auteur auteur){
+		getEstPubliePar().remove(auteur);
 	}
 	
 	
