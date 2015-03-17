@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -8,7 +9,7 @@ public class Abonné {
 	private String adresse;
 	private Date dateNaissance;
 	private String numero;
-	//private ArrayList<Document> emprunts;
+	private ArrayList<Document> emprunts;
 	
 	// getters & setters
 	public String getNom() {
@@ -42,12 +43,13 @@ public class Abonné {
 		this.numero = numero;
 	}
 	
-	// méthodes
-	/**
-	 * réalise un prêt pour un abonné
-	 * @param ref la référence du document
-	 */
-	public void emprunter(String ref){
-		
+	public ArrayList<Document> getEmprunts() {
+		return emprunts;
 	}
+	private void setEmprunts(ArrayList<Document> emprunts) {
+		this.emprunts = emprunts;
+	}
+	
+	// méthodes
+
 }
