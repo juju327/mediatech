@@ -68,6 +68,7 @@ public class Mediatek {
 		abonne.emprunter(emprunt);
 		emprunts.add(emprunt);
 		emprunt.getPret().setDisponible(false);
+		
 	}
 	
 	/**
