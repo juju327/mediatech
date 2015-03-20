@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 public class EmpruntControleur {
 	private Mediatek laMediatek = new Mediatek() ;
@@ -10,8 +11,8 @@ public class EmpruntControleur {
 	 * @param numeroAbo : numéro d'un abonné
 	 * @return true si le numéro d'abonné existe sinon false
 	 */
-	public boolean numeroAbonneValide(String numeroAbo){
-		return laMediatek.getAbonnes().containsKey(numeroAbo);
+	public Abonné numeroAbonneValide(String numeroAbo){
+		return laMediatek.getAbonnes().get(numeroAbo) ;
 	}
 	
 	/**
@@ -54,14 +55,11 @@ public class EmpruntControleur {
 	 * @return true si le document est disponible sinon false
 	 */
 	public boolean documentDisponible(Document document){
-		
-		return true;
-	}
-	
-	public Abonné getAbonneFromReference(){
-		//HashMap<String, Abonné> Map = laMediatek.getAbonnes();
-		
-		return null ;
+		if(document.isDisponible()){
+			return true;
+		}else{
+			return false ;
+		}
 	}
 	
 	
