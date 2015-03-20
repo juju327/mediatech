@@ -68,6 +68,12 @@ public class Mediatek {
 		
 	}
 	
+	/**
+	 * ajoute jours à la date date
+	 * @param date la date à laquelle ajouter les jours
+	 * @param jours le nombre de jours à ajouter
+	 * @return la nouvelle date
+	 */
 	public Date addToDate(Date date,int jours){
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
