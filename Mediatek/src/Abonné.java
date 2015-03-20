@@ -11,7 +11,7 @@ public class Abonné {
 	private String numero;
 	private ArrayList<Emprunt> emprunts;
 	
-	// constructeur
+	// Constructor
 	public Abonné(String nom, String prenom, String adresse, Date date, String num){
 		setNom(nom);
 		setPrenom(prenom);
@@ -75,5 +75,7 @@ public class Abonné {
 	public void rendre(Emprunt emprunt){
 		emprunts.remove(emprunt);
 	}
+	
+	// it's a com!
 
 }
