@@ -5,10 +5,18 @@ import java.util.HashMap;
 
 
 public class Mediatek {
+	
+	public Mediatek(){
+		documents = new HashMap<>();
+		abonnes = new HashMap<>();
+	}
 
-	private HashMap<Document,String> documents;
-	private HashMap<Abonné,String> abonnes;
+	/**
+	 * liste des emprunts en cours
+	 */
 	private ArrayList<Emprunt> emprunts;
+	private HashMap<String,Document> documents;
+	private HashMap<String,Abonné> abonnes;
 	
 	private int quotaGlobal = 6;
 	
@@ -20,22 +28,26 @@ public class Mediatek {
 	private void setQuotaGlobal(int quotaGlobal) {
 		this.quotaGlobal = quotaGlobal;
 	}
-	public HashMap<Document,String> getDocuments() {
+	public HashMap<String,Document> getDocuments() {
 		return documents;
 	}
-	public HashMap<Abonné,String> getAbonnes() {
+	public HashMap<String,Abonné> getAbonnes() {
 		return abonnes;
 	}
+	/**
+	 * 
+	 * @return la liste des emprunts en cours dans la médiathèque
+	 */
 	public ArrayList<Emprunt> getEmprunts() {
 		return emprunts;
 	}
 	private void setEmprunts(ArrayList<Emprunt> emprunts) {
 		this.emprunts = emprunts;
 	}
-	private void setAbonnes(HashMap<Abonné,String> abonnes) {
+	private void setAbonnes(HashMap<String,Abonné> abonnes) {
 		this.abonnes = abonnes;
 	}
-	private void setDocuments(HashMap<Document,String> documents) {
+	private void setDocuments(HashMap<String,Document> documents) {
 		this.documents = documents;
 	}
 		
@@ -81,6 +93,8 @@ public class Mediatek {
 		date = c.getTime();
 		return date;
 	}
+	
+	
 	
 	
 	
