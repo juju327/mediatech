@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Window;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -7,14 +8,19 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JMenu;
 import javax.swing.JPopupMenu;
+
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.JMenuItem;
+import javax.swing.JMenuBar;
 
 
 public class MyJFrame extends JFrame {
@@ -36,88 +42,89 @@ public class MyJFrame extends JFrame {
 			}
 		});
 	}
-
 	/**
 	 * Create the frame.
 	 */
 	public MyJFrame() {
 		setTitle("Mediatek, le meilleur de la tek");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1262, 462);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		// DOCUMENT
+		JMenu mnDocument = new JMenu("Document");
+		menuBar.add(mnDocument);
+		
+		// DOCUMENT -> AJOUTER
+		JMenu mnAjouter = new JMenu("Ajouter");
+		mnDocument.add(mnAjouter);	
+		
+		// DOCUMENT -> AJOUTER -> LIVRE
+		JMenuItem mntmLivre = new JMenuItem("Livre");
+		mntmLivre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Fenetre_ajouter_livre f = new Fenetre_ajouter_livre();
+			}
+		});
+		mnAjouter.add(mntmLivre);
+		
+		// DOCUMENT -> AJOUTER -> MUSIQUE
+		JMenuItem mntmMusique = new JMenuItem("Musique");
+		mntmMusique.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Fenetre_ajouter_musique f = new Fenetre_ajouter_musique();
+			}
+		});
+		mnAjouter.add(mntmMusique);
+		
+		// DOCUMENT -> SUPPRIMER
+		JMenuItem mntmSupprimer = new JMenuItem("Supprimer");
+		mntmSupprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Fenetre_supprimer_document f = new Fenetre_supprimer_document();
+			}
+		});
+		mnDocument.add(mntmSupprimer);
+		
+		mnDocument.addSeparator();
+		
+		// DOCUMENT -> PRET / RETOUR
+		JMenuItem mntmPret = new JMenuItem("Effectuer un prêt");
+		mnDocument.add(mntmPret);
+		
+		JMenuItem mntmRetour = new JMenuItem("Effectuer un retour");
+		mnDocument.add(mntmRetour);
+		
+		mnDocument.addSeparator();
+		
+		// DOCUMENT -> QUITTER
+		JMenuItem mntmQuitter = new JMenuItem("Quitter");
+		mntmQuitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		mnDocument.add(mntmQuitter);
+
+		// ABONNE
+		JMenu mnAbonn = new JMenu("Abonné");
+		menuBar.add(mnAbonn);
+		
+		// ADMINISTATION
+		JMenu mnAdministation = new JMenu("Administration");
+		menuBar.add(mnAdministation);
+		
+		JPopupMenu popupMenu = new JPopupMenu();
+		addPopup(this, popupMenu);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JButton btnAjouterUnDocument = new JButton("Ajouter un document");
-		btnAjouterUnDocument.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				contentPane.removeAll();
-				contentPane.add(btnAjouterUnDocument);
-				contentPane.revalidate(); 
-				contentPane.repaint();
-			}
-		});
-		btnAjouterUnDocument.setBounds(33, 72, 213, 25);
-		contentPane.add(btnAjouterUnDocument);
-		
-		JButton btnSupprimerUnDocument = new JButton("Supprimer un document");
-		btnSupprimerUnDocument.setBounds(276, 72, 203, 25);
-		contentPane.add(btnSupprimerUnDocument);
-		
-		JButton btnAjouterAbonn = new JButton("Ajouter abonné");
-		btnAjouterAbonn.setBounds(729, 72, 203, 25);
-		contentPane.add(btnAjouterAbonn);
-		
-		JButton btnRechercheParAuteur = new JButton("Recherche par auteur");
-		btnRechercheParAuteur.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnRechercheParAuteur.setBounds(33, 299, 213, 25);
-		contentPane.add(btnRechercheParAuteur);
-		
-		JButton btnRechercheParDocument = new JButton("Recherche par document");
-		btnRechercheParDocument.setBounds(276, 299, 218, 25);
-		contentPane.add(btnRechercheParDocument);
-		
-		JButton btnEffectuerPrt = new JButton("Effectuer prêt");
-		btnEffectuerPrt.setBounds(729, 299, 203, 25);
-		contentPane.add(btnEffectuerPrt);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(20, 39, 513, 94);
-		contentPane.add(panel);
-		
-		JButton btnSupprimerAbonn = new JButton("Supprimer abonné");
-		btnSupprimerAbonn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnSupprimerAbonn.setBounds(960, 72, 203, 25);
-		contentPane.add(btnSupprimerAbonn);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(689, 39, 513, 94);
-		contentPane.add(panel_1);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(20, 264, 513, 94);
-		contentPane.add(panel_2);
-		
-		JButton btnEffectuerUnRetour = new JButton("Effectuer un retour");
-		btnEffectuerUnRetour.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnEffectuerUnRetour.setBounds(960, 299, 203, 25);
-		contentPane.add(btnEffectuerUnRetour);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(689, 264, 513, 94);
-		contentPane.add(panel_3);
-		//aaa
+
 	}
+	
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
