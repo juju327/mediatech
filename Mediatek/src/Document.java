@@ -92,6 +92,6 @@ public abstract class Document {
 		getEstPubliePar().remove(auteur);
 	}
 	
-	//mignon 
+	
 	
 }

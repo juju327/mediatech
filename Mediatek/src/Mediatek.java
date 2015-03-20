@@ -12,6 +12,18 @@ public class Mediatek {
 	private HashMap<Document,String> documents;
 	private HashMap<Abonné,String> abonnes;
 	private ArrayList<Emprunt> emprunts;
+	
+	private int quotaGlobal = 6;
+	
+	
+
+	public int getQuotaGlobal() {
+		return quotaGlobal;
+	}
+
+	private void setQuotaGlobal(int quotaGlobal) {
+		this.quotaGlobal = quotaGlobal;
+	}
 
 	public HashMap<Document,String> getDocuments() {
 		return documents;

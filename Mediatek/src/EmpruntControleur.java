@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class EmpruntControleur {
-	
+	private Mediatek laMediatek = new Mediatek() ;
 	
 	/**
 	 * Recherche si le numéro d'abonné passé en paramètre appartient à la liste des abonnés de la médiatech.
@@ -8,8 +10,16 @@ public class EmpruntControleur {
 	 * @return true si le numéro d'abonné existe sinon false
 	 */
 	public boolean numeroAbonneValide(String numeroAbo){
-		
-		return true ;
+		ArrayList<Abonné> abonnes = new ArrayList<>();
+		Iterator<Abonné> itr = abonnes.iterator();
+		boolean trouve = false ;
+		while (itr.hasNext() && !trouve) {
+			Abonné element = itr.next();
+			if(element.getNumero() == numeroAbo){
+				trouve= true ;
+			}
+		}
+		return trouve ;
 	}
 	
 	/**
@@ -19,6 +29,7 @@ public class EmpruntControleur {
 	 * @return true si le quota global n'est pas dépassé sinon false
 	 */
 	public boolean quotaGlobalNonDepasse(String numeroAbo){
+		
 		return true ;
 	}
 	
@@ -30,8 +41,17 @@ public class EmpruntControleur {
 	 */
 	
 	public boolean referenceDocumentValide(String reference){
+		ArrayList<Document> documents = new ArrayList<>();
+		Iterator<Document> itr = documents.iterator();
+		boolean trouve = false ;
+		while (itr.hasNext() && !trouve) {
+			Document element = itr.next();
+			if(element.getReference() == reference){
+				trouve= true ;
+			}
+		}
+		return trouve ;
 		
-		return true;
 	}
 	
 	
@@ -55,5 +75,5 @@ public class EmpruntControleur {
 		return true;
 	}
 	
-	
+	//j'en suis iciiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii !!!!!!!!!!!!!!
 }
