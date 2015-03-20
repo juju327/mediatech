@@ -26,7 +26,7 @@ public class Mediatek {
 	public int getQuotaGlobal() {
 		return quotaGlobal;
 	}
-	private void setQuotaGlobal(int quotaGlobal) {
+	public void setQuotaGlobal(int quotaGlobal) {
 		this.quotaGlobal = quotaGlobal;
 	}
 	public HashMap<String,Document> getDocuments() {

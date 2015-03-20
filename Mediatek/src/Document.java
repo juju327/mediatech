@@ -17,7 +17,7 @@ public abstract class Document {
 	}
 	
 	
-	private boolean isDisponible() {
+	public boolean isDisponible() {
 		return disponible;
 	}
 

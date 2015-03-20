@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 public class EmpruntControleur {
 	private Mediatek laMediatek = new Mediatek() ;
@@ -9,17 +11,8 @@ public class EmpruntControleur {
 	 * @param numeroAbo : numéro d'un abonné
 	 * @return true si le numéro d'abonné existe sinon false
 	 */
-	public boolean numeroAbonneValide(String numeroAbo){
-		ArrayList<Abonné> abonnes = new ArrayList<>();
-		Iterator<Abonné> itr = abonnes.iterator();
-		boolean trouve = false ;
-		while (itr.hasNext() && !trouve) {
-			Abonné element = itr.next();
-			if(element.getNumero() == numeroAbo){
-				trouve= true ;
-			}
-		}
-		return trouve ;
+	public Abonné numeroAbonneValide(String numeroAbo){
+		return laMediatek.getAbonnes().get(numeroAbo) ;
 	}
 	
 	/**
@@ -41,19 +34,10 @@ public class EmpruntControleur {
 	 */
 	
 	public boolean referenceDocumentValide(String reference){
-		ArrayList<Document> documents = new ArrayList<>();
-		Iterator<Document> itr = documents.iterator();
-		boolean trouve = false ;
-		while (itr.hasNext() && !trouve) {
-			Document element = itr.next();
-			if(element.getReference() == reference){
-				trouve= true ;
-			}
-		}
-		return trouve ;
+		return laMediatek.getDocuments().containsKey(reference);
 		
 	}
-	
+	  
 	
 	/**
 	 * Recherche si le quota pour le type du document n'est pas dépassé pour l'abonné
@@ -71,9 +55,12 @@ public class EmpruntControleur {
 	 * @return true si le document est disponible sinon false
 	 */
 	public boolean documentDisponible(Document document){
-		
-		return true;
+		if(document.isDisponible()){
+			return true;
+		}else{
+			return false ;
+		}
 	}
 	
-	//j'en suis iciiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii !!!!!!!!!!!!!!
+	
 }
