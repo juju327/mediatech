@@ -158,6 +158,8 @@ public class Mediatek {
 		documents.put(musique.getReference(), musique);
 	}
 	
-	
+	public void supprimerDocument(Document doc){
+		documents.remove(doc.getReference());
+	}
 	
 }
