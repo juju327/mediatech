@@ -6,21 +6,19 @@ import java.util.HashMap;
 
 public class Mediatek {
 	
-	public Mediatek(){
-		documents = new HashMap<>();
-		abonnes = new HashMap<>();
-	}
-
 	/**
 	 * liste des emprunts en cours
 	 */
 	private ArrayList<Emprunt> emprunts;
 	private HashMap<String,Document> documents;
-	private HashMap<String,Abonné> abonnes;
-	
+	private HashMap<String,Abonné> abonnes;	
 	private int quotaGlobal = 6;
-	
-	
+	private static ConcreteFactory factory;
+
+	public Mediatek(){
+		documents = new HashMap<>();
+		abonnes = new HashMap<>();
+	}
 
 	public int getQuotaGlobal() {
 		return quotaGlobal;
@@ -94,10 +92,20 @@ public class Mediatek {
 		return date;
 	}
 	
+	public ConcreteFactory getFactory(){
+		if(factory == null) factory = new ConcreteFactory();
+		return factory;
+	}
 	
+	public void ajouterLivre(String titre, String dateParution, String numeroISBN ,GenreLivre genre){
+		Livre livre = getFactory().creerLivre(titre, dateParution, numeroISBN, genre);
+		documents.put(livre.getReference(), livre);
+	}
 	
-	
-	
+	public void ajouterMusique(String titre, String dateParution, GenreMusique genre){
+		Musique musique = getFactory().creerMusique(titre, dateParution, genre);
+		documents.put(musique.getReference(), musique);
+	}
 	
 	
 	
