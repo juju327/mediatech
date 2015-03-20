@@ -1,6 +1,3 @@
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -49,15 +46,10 @@ public class Mediatek {
 	 */
 	public void faireEmprunt(Document doc, Abonné abonne){
 		Date dateJour = new Date();
-		Date dateRetour = new Date();	
-		
 		int nbJours = doc.getDureeMax();
-
-		Calendar c = Calendar.getInstance();
-		c.setTime(dateRetour);
-		c.add(Calendar.DAY_OF_MONTH, nbJours);  
-		dateRetour = c.getTime();		
 		
+		Date dateRetour = addToDate(new Date(), nbJours);
+			
 		Emprunt emprunt = new Emprunt(doc, abonne, dateJour, dateRetour);
 		abonne.emprunter(emprunt);
 		emprunts.add(emprunt);
@@ -74,6 +66,14 @@ public class Mediatek {
 		abonne.rendre(emprunt);
 		emprunts.remove(emprunt);
 		
+	}
+	
+	public Date addToDate(Date date,int jours){
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.add(Calendar.DAY_OF_MONTH, jours);  
+		date = c.getTime();
+		return date;
 	}
 	
 	
