@@ -20,31 +20,24 @@ public class Mediatek {
 	public int getQuotaGlobal() {
 		return quotaGlobal;
 	}
-
 	private void setQuotaGlobal(int quotaGlobal) {
 		this.quotaGlobal = quotaGlobal;
 	}
-
 	public HashMap<Document,String> getDocuments() {
 		return documents;
 	}
-
 	public HashMap<Abonné,String> getAbonnes() {
 		return abonnes;
 	}
-
 	public ArrayList<Emprunt> getEmprunts() {
 		return emprunts;
 	}
-
 	private void setEmprunts(ArrayList<Emprunt> emprunts) {
 		this.emprunts = emprunts;
 	}
-
 	private void setAbonnes(HashMap<Abonné,String> abonnes) {
 		this.abonnes = abonnes;
 	}
-
 	private void setDocuments(HashMap<Document,String> documents) {
 		this.documents = documents;
 	}
