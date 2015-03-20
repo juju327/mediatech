@@ -37,7 +37,7 @@ public class EmpruntControleur {
 		return laMediatek.getDocuments().containsKey(reference);
 		
 	}
-	
+	  
 	
 	/**
 	 * Recherche si le quota pour le type du document n'est pas dépassé pour l'abonné

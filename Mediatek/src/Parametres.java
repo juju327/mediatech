@@ -15,7 +15,7 @@ public class Parametres {
 		setTempsMaxLivre(tempsMaxLivre);
 		setTempsMaxMusique(tempsMaxMusique);
 	}
-	 
+	       
 	/**
 	 * Les quota sont le nombre de document max que l'on peut emprunter en même temps
 	 * @return
