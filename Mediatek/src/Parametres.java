@@ -15,6 +15,11 @@ public class Parametres {
 		setTempsMaxLivre(tempsMaxLivre);
 		setTempsMaxMusique(tempsMaxMusique);
 	}
+	
+	/**
+	 * Les quota sont le nombre de document max que l'on peut emprunter en même temps
+	 * @return
+	 */
 	public int getQuotaGlobal() {
 		return quotaGlobal;
 	}
@@ -33,6 +38,11 @@ public class Parametres {
 	private void setQuotaMusique(int quotaMusique) {
 		this.quotaMusique = quotaMusique;
 	}
+	
+	/**
+	 * Les durées sont en jours
+	 * 
+	 */
 	public int getTempsMaxLivre() {
 		return tempsMaxLivre;
 	}
