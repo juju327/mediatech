@@ -6,13 +6,6 @@ public abstract class Document {
 	private String dateParution ;
 	private String reference ;
 	private boolean disponible;
-	
-	/**
-	 * c'est une durée en jours !!!!!!
-	 */
-	private int dureeMax ;
-	private int nbMax ;
-	
 	private ArrayList<Auteur> estPubliePar;
 
 	public Document(String titre, String dateParution) {
@@ -51,22 +44,6 @@ public abstract class Document {
 	}	
 	public void newReference(String reference){
 		setReference(reference);
-	}
-	/**
-	 * 
-	 * @return la durée maximale EN JOURS que peut être emprunté le document
-	 */
-	public int getDureeMax() {
-		return dureeMax;
-	}	
-	private void setDureeMax(int dureeMax) {
-		this.dureeMax = dureeMax;
-	}	
-	public int getNbMax() {
-		return nbMax;
-	}	
-	private void setNbMax(int nbMax) {
-		this.nbMax = nbMax;
 	}
 	
 	//Pour la liste des auteurs estPubliePar 
