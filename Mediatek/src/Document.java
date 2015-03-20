@@ -15,13 +15,10 @@ public abstract class Document {
 	
 	private ArrayList<Auteur> estPubliePar;
 
-	public Document(String titre, String dateParution, String reference,
-			int dureeMax, int nbMax) {
+	public Document(String titre, String dateParution) {
 		setTitre(titre);
 		setDateParution(dateParution);
-		setReference(reference);
-		setDureeMax(dureeMax);
-		setNbMax(nbMax);
+		createReference(titre, dateParution);
 		setDisponible(true);
 		estPubliePar = new ArrayList<Auteur>();
 	}
@@ -52,6 +49,9 @@ public abstract class Document {
 	private void setReference(String reference) {
 		this.reference = reference;
 	}	
+	public void newReference(String reference){
+		setReference(reference);
+	}
 	/**
 	 * 
 	 * @return la durée maximale EN JOURS que peut être emprunté le document
@@ -68,13 +68,11 @@ public abstract class Document {
 	private void setNbMax(int nbMax) {
 		this.nbMax = nbMax;
 	}
+	
 	//Pour la liste des auteurs estPubliePar 
 	public ArrayList<Auteur> getEstPubliePar() {
 		return estPubliePar;
 	}	
-	private void setEstPubliePar(ArrayList<Auteur> estPubliePar) {
-		this.estPubliePar = estPubliePar;
-	}
 	
 	/**
 	 * Ajoute un auteur au document 
@@ -92,6 +90,7 @@ public abstract class Document {
 		getEstPubliePar().remove(auteur);
 	}
 	
+	public abstract void createReference(String titre, String dateParution);
 	
 	
 }
