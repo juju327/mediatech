@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.ListIterator;
 
 public class EmpruntControleur {
 	private Mediatek laMediatek = new Mediatek() ;

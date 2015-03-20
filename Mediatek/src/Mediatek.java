@@ -11,6 +11,18 @@ public class Mediatek {
 	private ArrayList<Document> documents;
 	private ArrayList<Abonné> abonnes;
 	private ArrayList<Emprunt> emprunts;
+	
+	private int quotaGlobal = 6;
+	
+	
+
+	public int getQuotaGlobal() {
+		return quotaGlobal;
+	}
+
+	private void setQuotaGlobal(int quotaGlobal) {
+		this.quotaGlobal = quotaGlobal;
+	}
 
 	public ArrayList<Document> getDocuments() {
 		return documents;
