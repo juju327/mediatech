@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class EmpruntControleur {
@@ -10,16 +11,7 @@ public class EmpruntControleur {
 	 * @return true si le numéro d'abonné existe sinon false
 	 */
 	public boolean numeroAbonneValide(String numeroAbo){
-		ArrayList<Abonné> abonnes = new ArrayList<>();
-		Iterator<Abonné> itr = abonnes.iterator();
-		boolean trouve = false ;
-		while (itr.hasNext() && !trouve) {
-			Abonné element = itr.next();
-			if(element.getNumero() == numeroAbo){
-				trouve= true ;
-			}
-		}
-		return trouve ;
+		return laMediatek.getAbonnes().containsKey(numeroAbo);
 	}
 	
 	/**
@@ -41,16 +33,7 @@ public class EmpruntControleur {
 	 */
 	
 	public boolean referenceDocumentValide(String reference){
-		ArrayList<Document> documents = new ArrayList<>();
-		Iterator<Document> itr = documents.iterator();
-		boolean trouve = false ;
-		while (itr.hasNext() && !trouve) {
-			Document element = itr.next();
-			if(element.getReference() == reference){
-				trouve= true ;
-			}
-		}
-		return trouve ;
+		return laMediatek.getDocuments().containsKey(reference);
 		
 	}
 	
@@ -75,5 +58,11 @@ public class EmpruntControleur {
 		return true;
 	}
 	
-	//j'en suis iciiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii !!!!!!!!!!!!!!
+	public Abonné getAbonneFromReference(){
+		//HashMap<String, Abonné> Map = laMediatek.getAbonnes();
+		
+		return null ;
+	}
+	
+	
 }
