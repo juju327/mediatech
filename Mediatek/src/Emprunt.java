@@ -10,15 +10,16 @@ public class Emprunt {
 	private Abonné emprunteur;	
 	private Date dateEmprunt;
 	private Date dateRetour;
-	
+
 	public Emprunt(Document pret, Abonné emprunteur, Date dateEmprunt, Date dateRetour){
 		setPret(pret);
 		setDateEmprunt(dateEmprunt);
 		setDateRetour(dateRetour);
 		setEmprunteur(emprunteur);
 	}
-	
-	//getters & setters
+
+
+	//getters & setters	
 	public Document getPret() {
 		return pret;
 	}
