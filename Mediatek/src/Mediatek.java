@@ -1,4 +1,8 @@
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -6,6 +10,7 @@ public class Mediatek {
 
 	private ArrayList<Document> documents;
 	private ArrayList<Abonné> abonnes;
+	private ArrayList<Emprunt> emprunts;
 
 	public ArrayList<Document> getDocuments() {
 		return documents;
@@ -56,13 +61,20 @@ public class Mediatek {
 	 * @param refDoc la référence du document à emprunter
 	 * @param numAb le numéro de l'abonné
 	 */
-	public void faireEmprunt(String refDoc, String numAb){
-		Document doc = getDocumentByRef(refDoc);
-		Abonné abonne = getAbonneByNum(numAb);
-		Date dateJour;
-		Date dateRetour; // = dateJour + doc.getDuree
-		//Emprunt emprunt = new Emprunt(dateJour, dateRetour, )
-		//abonne.emprunter(doc);
+	public void faireEmprunt(Document doc, Abonné abonne){
+		Date dateJour = new Date();
+		Date dateRetour = new Date();	
+		
+		int nbJours = doc.getDureeMax();
+
+		Calendar c = Calendar.getInstance();
+		c.setTime(dateRetour);
+		c.add(Calendar.DAY_OF_MONTH, nbJours);  
+		dateRetour = c.getTime();		
+		
+		Emprunt emprunt = new Emprunt(doc, abonne, dateJour, dateRetour);
+		abonne.emprunter(emprunt);
+		emprunts.add(emprunt);
 	}
 	
 	/**
@@ -70,12 +82,17 @@ public class Mediatek {
 	 * @param refDoc la référence du document à rendre
 	 * @param numAb le numéro de l'abonné
 	 */
-	public void faireRetour(String refDoc, String numAb){
-		Document doc = getDocumentByRef(refDoc);
-		Abonné abonne = getAbonneByNum(numAb);
+	public void faireRetour(Document doc, Abonné abonne){
+		
+		//emprunt
+		//abonne.rendre(emprunt);
+		//emprunts.add(emprunt);
 		
 		//abonne.rendre(doc);
 	}
+	
+	
+	
 	
 	
 	

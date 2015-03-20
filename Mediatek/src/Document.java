@@ -5,6 +5,9 @@ public abstract class Document {
 	private String titre ;
 	private String dateParution ;
 	private String reference ;
+	/**
+	 * c'est une durée en jours !!!!!!
+	 */
 	private int dureeMax ;
 	private int nbMax ;
 	
@@ -44,6 +47,10 @@ public abstract class Document {
 		this.reference = reference;
 	}
 	
+	/**
+	 * 
+	 * @return la durée maximale en jours que peut être emprunté le document
+	 */
 	public int getDureeMax() {
 		return dureeMax;
 	}
