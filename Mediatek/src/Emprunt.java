@@ -47,20 +47,5 @@ public class Emprunt {
 	
 	//
 	
-	public String dateToString(Date date){
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		return dateFormat.format(date);
-	}
 	
-	public Date stringToDate(String d){
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
-		Date date = null;
-		try
-		{
-		  date= df.parse(d);
-		} catch (ParseException e){
-		  e.printStackTrace();
-		} 
-		return date;
-	}
 }

@@ -1,3 +1,6 @@
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -56,8 +59,9 @@ public class Mediatek {
 	 */
 	public void faireEmprunt(Document doc, Abonné abonne){
 		Date dateJour = new Date();
-		int nbJours = doc.getDureeMax();
-		
+		//int nbJours = doc.getDureeMax();
+		int nbJours = 1;
+		// TODO remettre une méthode qui va bien !!
 		Date dateRetour = addToDate(new Date(), nbJours);
 			
 		Emprunt emprunt = new Emprunt(doc, abonne, dateJour, dateRetour);
@@ -91,22 +95,67 @@ public class Mediatek {
 		date = c.getTime();
 		return date;
 	}
+
+	/**
+	 * 
+	 * @param date la date à transformer en string
+	 * @return une string représentant la date
+	 */
+	public String dateToString(Date date){
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(date);
+	}
 	
+	/**
+	 * 
+	 * @param d la string représentant une date à transformer en date
+	 * @return une date issue de la string donnée
+	 */
+	public Date stringToDate(String d){
+
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
+		Date date = null;
+		try
+		{
+		  date= df.parse(d);
+		} catch (ParseException e){
+		  e.printStackTrace();
+		} 
+		return date;
+	}
+	
+	
+	/**
+	 * crée une instance unique (singleton) de ConcreteFactory pour produire des documents
+	 * @return une instance unique (singleton) de ConcreteFactory
+	 */
 	public ConcreteFactory getFactory(){
 		if(factory == null) factory = new ConcreteFactory();
 		return factory;
 	}
 	
+	/**
+	 * ajoute un livre à la collection de documents de la médiathèque
+	 * @param titre
+	 * @param dateParution
+	 * @param numeroISBN
+	 * @param genre
+	 */
 	public void ajouterLivre(String titre, String dateParution, String numeroISBN ,GenreLivre genre){
 		Livre livre = getFactory().creerLivre(titre, dateParution, numeroISBN, genre);
 		documents.put(livre.getReference(), livre);
 	}
 	
+	/**
+	 * ajoute une musique à la collection de documents de la médiathèque
+	 * @param titre
+	 * @param dateParution
+	 * @param genre
+	 */
 	public void ajouterMusique(String titre, String dateParution, GenreMusique genre){
 		Musique musique = getFactory().creerMusique(titre, dateParution, genre);
 		documents.put(musique.getReference(), musique);
 	}
-	
 	
 	
 	
