@@ -7,6 +7,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -17,6 +18,7 @@ public class Fenetre_ajouter_livre extends JFrame  {
 	private JTextField champ_titre;
 	private JTextField champs_dateParution;
 	private JTextField champs_numeroISBN;
+	private Controleur_documents controleur_doc;
 	
 	public Fenetre_ajouter_livre() {
 		setTitle("Ajouter un livre");
@@ -66,7 +68,9 @@ public class Fenetre_ajouter_livre extends JFrame  {
 				String numISBN = champs_numeroISBN.getText();
 				String genre = lblGenre.getText();
 				
-				creerLivre(titre, date, numISBN, genre);
+				ArrayList<Auteur> auteurs = new ArrayList();
+				
+				//controleur_doc.creerLivre(titre, date, numISBN, genre, auteurs);
 			}			
 		});
 		btnAjouter.setBounds(448, 300, 117, 25);
@@ -77,8 +81,5 @@ public class Fenetre_ajouter_livre extends JFrame  {
 		setVisible(true);
 	}
 	
-	private void creerLivre(String titre, String date, String numISBN, String genre) {
-		// TODO Auto-generated method stub
-		
-	}
+
 }

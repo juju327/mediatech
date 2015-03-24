@@ -6,16 +6,24 @@ public abstract class Document {
 	private String dateParution ;
 	private String reference ;
 	private boolean disponible;
-	private ArrayList<Auteur> estPubliePar;
+	private ArrayList<Auteur> auteurs;
 
-	public Document(String titre, String dateParution) {
+	public Document(String titre, String dateParution, ArrayList<Auteur> auteurs) {
 		setTitre(titre);
 		setDateParution(dateParution);
 		createReference(titre, dateParution);
 		setDisponible(true);
-		estPubliePar = new ArrayList<Auteur>();
+		setAuteurs(auteurs);
 	}
 
+
+	public ArrayList<Auteur> getAuteurs() {
+		return auteurs;
+	}
+	
+	private void setAuteurs(ArrayList<Auteur> auteurs) {
+		this.auteurs = auteurs;
+	}
 
 	public boolean isDisponible() {
 		return disponible;
@@ -44,11 +52,6 @@ public abstract class Document {
 	}	
 	public void newReference(String reference){
 		setReference(reference);
-	}
-	
-	//Pour la liste des auteurs estPubliePar 
-	public ArrayList<Auteur> getEstPubliePar() {
-		return estPubliePar;
 	}	
 	
 	/**
@@ -56,7 +59,7 @@ public abstract class Document {
 	 * @param auteur : Auteur (qui a publié le livre)
 	 */
 	public void addAuteur(Auteur auteur){
-		getEstPubliePar().add(auteur);
+		getAuteurs().add(auteur);
 	}
 	
 	/**
@@ -64,7 +67,7 @@ public abstract class Document {
 	 * @param auteur : Auteur (qui a publié le livre)
 	 */
 	public void removeAuteur(Auteur auteur){
-		getEstPubliePar().remove(auteur);
+		getAuteurs().remove(auteur);
 	}
 	
 	public abstract void createReference(String titre, String dateParution);

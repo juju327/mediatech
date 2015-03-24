@@ -1,11 +1,13 @@
+import java.util.ArrayList;
+
 
 public class Musique extends Document{
 	private GenreMusique genre ;
 	
 
 
-	public Musique(String titre, String dateParution, GenreMusique genre) {
-		super(titre, dateParution);	
+	public Musique(String titre, String dateParution, GenreMusique genre, ArrayList<Auteur> auteurs) {
+		super(titre, dateParution, auteurs);	
 		setGenre(genre);
 	}
 	
