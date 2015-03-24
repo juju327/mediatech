@@ -75,21 +75,31 @@ public class Fenetre_ajouter_livre extends JFrame {
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String titre = champ_titre.getText();
-				String auteur = champ_auteur.getText();
+				String aut = champ_auteur.getText();
 				String date = champ_dateParution.getText();
 				String numISBN = champ_numeroISBN.getText();
 				String genre = lblGenre.getText();
-
+				GenreLivre genreL = GenreLivre.valueOf(genre);			
+				
+				ArrayList<Auteur> auteurs = new ArrayList<>();
+				// TODO faire une boucle pour récupérer les auteurs du champ texte
+				
+				if(!aut.isEmpty()) {
+					Auteur auteur = new Auteur(aut);
+					auteurs.add(auteur);
+				}
+				
+				
 				JFrame frame = new JFrame();
 
-				if (!titre.isEmpty() && !numISBN.isEmpty() && !auteur.isEmpty() && !date.isEmpty()) {
+				if (!titre.isEmpty() && !numISBN.isEmpty() && !auteurs.isEmpty() && !date.isEmpty()) {
 					int result = JOptionPane.showConfirmDialog(frame,
 							"Êtes-vous sûr de vouloir ajouter ce document: Titre:\""
 									+ titre + "\" Date de parution:\"" + date
-									+ "\" Auteur:\"" + auteur + "\"");
-					
+									+ "\" Auteur:\"" + aut + "\"");
+					// TODO gérer l'affichage des auteurs multiples
 					if(result == JOptionPane.YES_OPTION){
-						//controleur_doc.creerLivre(titre, date, numISBN, genre, auteur);
+						controleur_doc.creerLivre(titre, date, numISBN, genreL, auteurs);
 					}
 				}
 			}
