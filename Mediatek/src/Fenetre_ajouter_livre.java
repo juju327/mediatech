@@ -6,8 +6,10 @@ import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -61,7 +63,10 @@ public class Fenetre_ajouter_livre extends JFrame  {
 		getContentPane().add(lblGenre);
 		
 		JComboBox genreLivre = new JComboBox();
-		genreLivre.setModel(new DefaultComboBoxModel(new String[] {"Roman", "BD", "Documentaire", "Manga", "Jeunesse", "Autre"}));
+		ArrayList<GenreLivre> genres = new ArrayList<GenreLivre>();
+		
+		//TODO
+		genreLivre.setModel(new DefaultComboBoxModel();
 		genreLivre.setBounds(255, 300, 96, 24);
 		getContentPane().add(genreLivre);
 		
