@@ -2,11 +2,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
- 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -58,11 +59,26 @@ public class Fenetre_ajouter_livre extends JFrame  {
 		getContentPane().add(genreLivre);
 		
 		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String titre = champ_titre.getText();
+				String date = champs_dateParution.getText();
+				String numISBN = champs_numeroISBN.getText();
+				String genre = lblGenre.getText();
+				
+				creerLivre(titre, date, numISBN, genre);
+			}			
+		});
 		btnAjouter.setBounds(448, 300, 117, 25);
 		getContentPane().add(btnAjouter);
 		
 		setBounds(250, 250, 950, 462);
 
 		setVisible(true);
+	}
+	
+	private void creerLivre(String titre, String date, String numISBN, String genre) {
+		// TODO Auto-generated method stub
+		
 	}
 }

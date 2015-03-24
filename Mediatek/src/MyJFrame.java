@@ -112,6 +112,30 @@ public class MyJFrame extends JFrame {
 		JMenu mnAbonn = new JMenu("Abonné");
 		menuBar.add(mnAbonn);
 		
+		// RECHERCHE
+		JMenu mnRecherche = new JMenu("Recherche");
+		menuBar.add(mnRecherche);
+		
+		// RECHERCHE -> AUTEUR
+		JMenuItem mntmRechercheAuteur = new JMenuItem("Par auteur");
+		mntmRechercheAuteur.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		mnRecherche.add(mntmRechercheAuteur);
+		
+		// RECHERCHE -> DOCUMENT
+		JMenuItem mntmRechercheDocument = new JMenuItem("Par document");
+		mntmRechercheAuteur.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		mnRecherche.add(mntmRechercheDocument);
+		
 		// ADMINISTATION
 		JMenu mnAdministation = new JMenu("Administration");
 		menuBar.add(mnAdministation);
