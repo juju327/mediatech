@@ -5,7 +5,7 @@ public class Livre extends Document {
 	
 	
 	public Livre(String titre, String dateParution, String numeroISBN ,GenreLivre genre) {
-		super(titre, dateParution);
+		super(titre,dateParution);
 		createReference(titre, dateParution);
 		setNumeroISBN(numeroISBN);
 		setGenre(genre);
