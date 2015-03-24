@@ -137,8 +137,8 @@ public class Mediatek {
 	 * @param numeroISBN
 	 * @param genre
 	 */
-	public void ajouterLivre(String titre, String dateParution, String numeroISBN ,GenreLivre genre){
-		Livre livre = getFactory().creerLivre(titre, dateParution, numeroISBN, genre);
+	public void ajouterLivre(String titre, String dateParution, String numeroISBN ,GenreLivre genre, ArrayList<Auteur> auteurs){
+		Livre livre = getFactory().creerLivre(titre, dateParution, numeroISBN, genre, auteurs);
 		documents.put(livre.getReference(), livre);
 	}
 	
@@ -148,8 +148,8 @@ public class Mediatek {
 	 * @param dateParution
 	 * @param genre
 	 */
-	public void ajouterMusique(String titre, String dateParution, GenreMusique genre){
-		Musique musique = getFactory().creerMusique(titre, dateParution, genre);
+	public void ajouterMusique(String titre, String dateParution, GenreMusique genre, ArrayList<Auteur> auteurs){
+		Musique musique = getFactory().creerMusique(titre, dateParution, genre, auteurs);
 		documents.put(musique.getReference(), musique);
 	}
 	
