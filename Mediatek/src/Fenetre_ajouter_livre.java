@@ -1,6 +1,7 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
@@ -15,8 +16,9 @@ import javax.swing.DefaultComboBoxModel;
 
 public class Fenetre_ajouter_livre extends JFrame  {
 	private JTextField champ_titre;
-	private JTextField champs_dateParution;
-	private JTextField champs_numeroISBN;
+	private JTextField champ_dateParution;
+	private JTextField champ_numeroISBN;
+	private JTextField champ_auteur;
 	
 	public Fenetre_ajouter_livre() {
 		setTitle("Ajouter un livre");
@@ -31,23 +33,28 @@ public class Fenetre_ajouter_livre extends JFrame  {
 		lblTitre.setBounds(67, 80, 54, 50);
 		getContentPane().add(lblTitre);
 		
+		champ_auteur = new JTextField();
+		champ_auteur.setColumns(10);
+		champ_auteur.setBounds(255, 143, 114, 19);
+		getContentPane().add(champ_auteur);
+		
 		JLabel lblDateDeParution = new JLabel("Date de parution");
-		lblDateDeParution.setBounds(67, 149, 133, 50);
+		lblDateDeParution.setBounds(67, 179, 133, 50);
 		getContentPane().add(lblDateDeParution);
 		
-		champs_dateParution = new JTextField();
-		champs_dateParution.setColumns(10);
-		champs_dateParution.setBounds(255, 165, 114, 19);
-		getContentPane().add(champs_dateParution);
+		champ_dateParution = new JTextField();
+		champ_dateParution.setColumns(10);
+		champ_dateParution.setBounds(255, 195, 114, 19);
+		getContentPane().add(champ_dateParution);
 		
 		JLabel lblNumroIsbn = new JLabel("Numéro ISBN");
-		lblNumroIsbn.setBounds(67, 211, 133, 50);
+		lblNumroIsbn.setBounds(67, 225, 133, 50);
 		getContentPane().add(lblNumroIsbn);
 		
-		champs_numeroISBN = new JTextField();
-		champs_numeroISBN.setColumns(10);
-		champs_numeroISBN.setBounds(255, 227, 114, 19);
-		getContentPane().add(champs_numeroISBN);
+		champ_numeroISBN = new JTextField();
+		champ_numeroISBN.setColumns(10);
+		champ_numeroISBN.setBounds(255, 241, 114, 19);
+		getContentPane().add(champ_numeroISBN);
 		
 		JLabel lblGenre = new JLabel("Genre");
 		lblGenre.setBounds(67, 287, 133, 50);
@@ -62,22 +69,31 @@ public class Fenetre_ajouter_livre extends JFrame  {
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String titre = champ_titre.getText();
-				String date = champs_dateParution.getText();
-				String numISBN = champs_numeroISBN.getText();
+				String auteur = champ_auteur.getText();
+				String date = champ_dateParution.getText();
+				String numISBN = champ_numeroISBN.getText();
 				String genre = lblGenre.getText();
 				
-				creerLivre(titre, date, numISBN, genre);
+				JFrame frame = new JFrame();
+			    int result = JOptionPane.showConfirmDialog(frame, "Êtes-vous sûr de vouloir supprimer ce document: Titre:\""+titre+"\" Date de parution:\""+date+"\" Auteur:\""+auteur+"\"");
+				creerLivre(titre, date, numISBN, genre, auteur);
 			}			
 		});
 		btnAjouter.setBounds(448, 300, 117, 25);
 		getContentPane().add(btnAjouter);
+		
+		JLabel lblAuteur = new JLabel("Auteur");
+		lblAuteur.setBounds(67, 127, 54, 50);
+		getContentPane().add(lblAuteur);
+		
+		
 		
 		setBounds(250, 250, 950, 462);
 
 		setVisible(true);
 	}
 	
-	private void creerLivre(String titre, String date, String numISBN, String genre) {
+	private void creerLivre(String titre, String date, String numISBN, String genre, String auteur) {
 		// TODO Auto-generated method stub
 		
 	}
