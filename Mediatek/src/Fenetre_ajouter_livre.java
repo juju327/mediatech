@@ -21,6 +21,7 @@ public class Fenetre_ajouter_livre extends JFrame  {
 	private JTextField champ_dateParution;
 	private JTextField champ_numeroISBN;
 	private JTextField champ_auteur;
+	private Controleur_documents controleur_doc;
 	
 	public Fenetre_ajouter_livre() {
 		setTitle("Ajouter un livre");
@@ -80,8 +81,8 @@ public class Fenetre_ajouter_livre extends JFrame  {
 				String genre = lblGenre.getText();
 				
 				JFrame frame = new JFrame();
-			    int result = JOptionPane.showConfirmDialog(frame, "Êtes-vous sûr de vouloir supprimer ce document: Titre:\""+titre+"\" Date de parution:\""+date+"\" Auteur:\""+auteur+"\"");
-				creerLivre(titre, date, numISBN, genre, auteur);
+			    int result = JOptionPane.showConfirmDialog(frame, "Êtes-vous sûr de vouloir ajouter ce document: Titre:\""+titre+"\" Date de parution:\""+date+"\" Auteur:\""+auteur+"\"");
+				//controleur_doc.creerLivre(titre, date, numISBN, genre, auteur);
 			}			
 		});
 		btnAjouter.setBounds(448, 300, 117, 25);
@@ -97,10 +98,5 @@ public class Fenetre_ajouter_livre extends JFrame  {
 
 		setVisible(true);
 	}
-	
-	private void creerLivre(String titre, String date, String numISBN, String genre, String auteur) {
-		// TODO Auto-generated method stub
-		
-	}
-	//Aaaa
+
 }
