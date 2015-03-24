@@ -35,7 +35,6 @@ public class EmpruntControleur {
 	
 	public boolean referenceDocumentValide(String reference){
 		return laMediatek.getDocuments().containsKey(reference);
-		
 	}
 	  
 	
@@ -45,9 +44,9 @@ public class EmpruntControleur {
 	 * @param document : document
 	 * @return true si le quota pour le type du document n'est pas dépassé sinon false
 	 */
-	public boolean quotaTypeNonDepasse(String numeroAbo, Document document){
+	/*public boolean quotaTypeNonDepasse(String numeroAbo, Document document){
 		return true ;
-	}
+	} */
 	
 	/**
 	 * Recherche si le document est disponible
