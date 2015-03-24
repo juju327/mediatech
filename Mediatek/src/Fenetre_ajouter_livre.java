@@ -10,6 +10,7 @@ import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -63,10 +64,10 @@ public class Fenetre_ajouter_livre extends JFrame  {
 		getContentPane().add(lblGenre);
 		
 		JComboBox genreLivre = new JComboBox();
-		ArrayList<GenreLivre> genres = new ArrayList<GenreLivre>();
+		GenreLivre[] genres = GenreLivre.values();
 		
 		//TODO
-		//genreLivre.setModel(new DefaultComboBoxModel();
+		genreLivre.setModel(new DefaultComboBoxModel(genres));
 		genreLivre.setBounds(255, 300, 96, 24);
 		getContentPane().add(genreLivre);
 		
@@ -77,11 +78,12 @@ public class Fenetre_ajouter_livre extends JFrame  {
 				String auteur = champ_auteur.getText();
 				String date = champ_dateParution.getText();
 				String numISBN = champ_numeroISBN.getText();
-				String genre = lblGenre.getText();
+				String genre_temp = lblGenre.getText();
+				//GenreLivre genre = GenreLivre.valueOf(genre_temp);
 				
 				JFrame frame = new JFrame();
 			    int result = JOptionPane.showConfirmDialog(frame, "Êtes-vous sûr de vouloir supprimer ce document: Titre:\""+titre+"\" Date de parution:\""+date+"\" Auteur:\""+auteur+"\"");
-				creerLivre(titre, date, numISBN, genre, auteur);
+				//creerLivre(titre, date, numISBN, genre, auteur);
 			}			
 		});
 		btnAjouter.setBounds(448, 300, 117, 25);
@@ -98,7 +100,7 @@ public class Fenetre_ajouter_livre extends JFrame  {
 		setVisible(true);
 	}
 	
-	private void creerLivre(String titre, String date, String numISBN, String genre, String auteur) {
+	private void creerLivre(String titre, String date, String numISBN, GenreLivre genre, String auteur) {
 		// TODO Auto-generated method stub
 		
 	}
