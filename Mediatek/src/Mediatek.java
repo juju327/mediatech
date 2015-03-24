@@ -105,7 +105,7 @@ public class Mediatek {
 	/**
 	 * 
 	 * @param d la string représentant une date à transformer en date
-	 * @return une date issue de la string donnée
+	 * @return une date issue de la string donnée, null sinon
 	 */
 	public Date stringToDate(String d){
 
