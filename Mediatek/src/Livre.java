@@ -32,4 +32,5 @@ public class Livre extends Document {
 		newReference("L-"+numeroISBN+"-"+genre+"-"+dateParution);	
 	}
 	
+	
 }
