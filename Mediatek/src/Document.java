@@ -15,9 +15,9 @@ public abstract class Document {
 		setDisponible(true);
 		estPubliePar = new ArrayList<Auteur>();
 	}
-	
-	
-	private boolean isDisponible() {
+
+
+	public boolean isDisponible() {
 		return disponible;
 	}
 

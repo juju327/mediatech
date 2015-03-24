@@ -15,7 +15,7 @@ public class Mediatek {
 	private ArrayList<Emprunt> emprunts;
 	private HashMap<String,Document> documents;
 	private HashMap<String,Abonné> abonnes;	
-	private int quotaGlobal = 6;
+
 	private static ConcreteFactory factory;
 
 	public Mediatek(){
@@ -23,12 +23,7 @@ public class Mediatek {
 		abonnes = new HashMap<>();
 	}
 
-	public int getQuotaGlobal() {
-		return quotaGlobal;
-	}
-	private void setQuotaGlobal(int quotaGlobal) {
-		this.quotaGlobal = quotaGlobal;
-	}
+
 	public HashMap<String,Document> getDocuments() {
 		return documents;
 	}
@@ -158,6 +153,8 @@ public class Mediatek {
 		documents.put(musique.getReference(), musique);
 	}
 	
-	
+	public void supprimerDocument(Document doc){
+		documents.remove(doc.getReference());
+	}
 	
 }
