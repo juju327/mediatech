@@ -3,10 +3,8 @@ public class Auteur {
 	private String prenom ;
 	private String nationalité ;
 	
-	public Auteur(String nom, String prenom, String nationalité) {
+	public Auteur(String nom) {
 		setNom(nom);
-		setPrenom(prenom);
-		setNationalité(nationalité);
 	}
 
 	public String getNom() {
