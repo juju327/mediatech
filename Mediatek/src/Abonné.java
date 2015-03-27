@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Abonné {
 	
+	// je suis toute seule
 	private String nom;
 	private String prenom;
 	private String adresse;
