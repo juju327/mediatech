@@ -19,6 +19,7 @@ public class Abonné {
 		setDateNaissance(date);
 		setNumero(num);
 		emprunts = new ArrayList<Emprunt>();
+		// hello commentaire pouet
 	}
 	
 	// getters & setters
