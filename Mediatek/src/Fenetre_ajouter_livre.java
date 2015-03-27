@@ -62,9 +62,8 @@ public class Fenetre_ajouter_livre extends JFrame {
 		JLabel lblGenre = new JLabel("Genre");
 		lblGenre.setBounds(67, 287, 133, 50);
 		getContentPane().add(lblGenre);
-		JComboBox genreLivre = new JComboBox();
-		GenreLivre[] genres = GenreLivre.values();
-		genreLivre.setModel(new DefaultComboBoxModel(genres));
+		JComboBox genreLivre = new JComboBox(GenreLivre.values());
+
 		genreLivre.setBounds(255, 300, 96, 24);
 		getContentPane().add(genreLivre);
 
@@ -75,8 +74,7 @@ public class Fenetre_ajouter_livre extends JFrame {
 				String aut = champ_auteur.getText();
 				String date = champ_dateParution.getText();
 				String numISBN = champ_numeroISBN.getText();
-				String genre = lblGenre.getText();
-				GenreLivre genreL = GenreLivre.valueOf(genre);
+				GenreLivre genre = (GenreLivre) genreLivre.getSelectedItem();
 
 				ArrayList<Auteur> auteurs = new ArrayList<>();
 				// TODO faire une boucle pour récupérer les auteurs du champ
@@ -94,12 +92,16 @@ public class Fenetre_ajouter_livre extends JFrame {
 					int result = JOptionPane.showConfirmDialog(frame,
 							"Êtes-vous sûr de vouloir ajouter ce document: Titre:\""
 									+ titre + "\" Date de parution:\"" + date
-									+ "\" Auteur:\"" + aut + "\"");
+									+ "\" Auteur:\"" + aut + "\" Genre : \""
+									+ genre.toString() + "\"");
 					// TODO gérer l'affichage des auteurs multiples
 					if (result == JOptionPane.YES_OPTION) {
-						controleur_doc.creerLivre(titre, date, numISBN, genreL,
+						// TODO on est ici exception du creerLivre à traiter !!!!
+						controleur_doc.creerLivre(titre, date, numISBN, genre,
 								auteurs);
+						// champ_titre.setText("hello");
 					}
+
 				}
 			}
 		});
