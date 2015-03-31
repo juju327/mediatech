@@ -20,8 +20,6 @@ public class Abonné {
 		setDateNaissance(date);
 		setNumero(num);
 		emprunts = new ArrayList<Emprunt>();
-		// hello commentaire pouet
-		// ceci est un test du 31 mars 2015 tupèz
 	}
 	
 	// getters & setters
