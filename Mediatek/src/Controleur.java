@@ -9,4 +9,8 @@ public abstract class Controleur {
 	private void setMediatek(Mediatek mediatek) {
 		this.mediatek = mediatek;
 	}
+	
+	public Controleur(){
+		setMediatek(new Mediatek());
+	}
 }

@@ -15,4 +15,9 @@ public class Controleur_documents extends Controleur {
 		}
 		return false;
 	}
+	
+	public Controleur_documents(){
+		super();
+		
+	}
 }

@@ -24,6 +24,7 @@ public class Fenetre_ajouter_livre extends JFrame {
 	private Controleur_documents controleur_doc;
 
 	public Fenetre_ajouter_livre() {
+		controleur_doc = new Controleur_documents();
 		setTitle("Ajouter un livre");
 		getContentPane().setLayout(null);
 
