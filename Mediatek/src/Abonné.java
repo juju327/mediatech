@@ -21,6 +21,7 @@ public class Abonné {
 		setNumero(num);
 		emprunts = new ArrayList<Emprunt>();
 		// hello commentaire pouet
+		// ceci est un test du 31 mars 2015 tupèz
 	}
 	
 	// getters & setters
@@ -72,7 +73,7 @@ public class Abonné {
 	
 	/**
 	 * enlève le document doc de la liste des emprunts de cet abonné
-	 * @param doc le document à rendre
+	 * @param doc le document à rendre 
 	 */
 	public void rendre(Emprunt emprunt){
 		emprunts.remove(emprunt);
