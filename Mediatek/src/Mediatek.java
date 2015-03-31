@@ -1,3 +1,9 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,12 +21,13 @@ public class Mediatek {
 	private ArrayList<Emprunt> emprunts;
 	private HashMap<String,Document> documents;
 	private HashMap<String,Abonné> abonnes;	
+	// fichier de sérialisation
+	private static final String file_db ="mediatek.db";
 
 	private static ConcreteFactory factory;
 
 	public Mediatek(){
-		documents = new HashMap<>();
-		abonnes = new HashMap<>();
+		
 	}
 
 
@@ -171,4 +178,96 @@ public class Mediatek {
 		documents.remove(doc.getReference());
 	}
 	
+	/**
+     * Création d'une nouvelle sÃ©rialisation
+     */
+    public void newDB() {
+    	
+    	setDocuments(new HashMap<String, Document>());
+		setAbonnes(new HashMap<String, Abonné>());
+    }
+    
+    /**
+     * Sauvegarde du fichier de sÃ©rialisation
+     */
+ 	
+     public boolean saveDB() {
+         File file;
+         boolean success = true;
+         FileOutputStream fos = null;
+         ObjectOutputStream oos = null;            
+         
+         file = new File(file_db);
+         try {
+             fos = new FileOutputStream(file);
+             oos = new ObjectOutputStream(fos);
+             
+             // ici on sauvegarde nos données
+             //oos.writeInt(numDerMonit);
+             oos.writeObject(abonnes);
+             oos.writeObject(documents);
+             oos.writeObject(emprunts);
+             
+         }
+         catch (Exception e) {
+             System.out.println("SAVE" + e);
+             success = false;
+         }
+         finally {
+                 if (oos != null) { 
+                     try { oos.close(); }
+                     catch(IOException e) {}
+                 }
+                 
+                 if (fos != null) { 
+                     try { fos.close(); }
+                     catch(IOException e) {}
+                 }
+             
+         }
+         return success;
+     }
+     
+     
+     /**
+      * Chargement des données Ã  partir d'un fichier de sérialisation
+      */
+     public boolean loadDB() {
+         boolean success = true;
+         File file = new File(file_db);
+         
+         if (file.exists()) {
+             FileInputStream fis = null;
+             ObjectInputStream ois = null;            
+
+             try {
+                 fis = new FileInputStream(file);
+                 ois = new ObjectInputStream(fis);
+                 
+                // numDerMonit = ois.readInt();
+                 abonnes = (HashMap<String,Abonné>) ois.readObject();
+                 documents = (HashMap<String,Document>) ois.readObject();
+                 emprunts = (ArrayList<Emprunt>) ois.readObject();
+                 
+             }             
+             catch(Exception e) {
+                 System.out.println("LOAD" + e);
+                 success = false;
+             }
+             finally {
+                 if (ois != null) { 
+                     try { ois.close(); }
+                     catch(IOException e) {}
+                 }
+                 
+                 if (fis != null) { 
+                     try { fis.close(); }
+                     catch(IOException e) {}
+                 }
+             }
+         } else { success = false; }
+         return success;
+     }
+
+    
 }

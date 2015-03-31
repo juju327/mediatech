@@ -26,11 +26,14 @@ import javax.swing.JMenuBar;
 public class MyJFrame extends JFrame {
 
 	private JPanel contentPane;
+	private static Controleur_mediatek controleur_mediatek;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		controleur_mediatek = new Controleur_mediatek(new Mediatek());
+		controleur_mediatek.getMediatek().newDB();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -65,7 +68,7 @@ public class MyJFrame extends JFrame {
 		JMenuItem mntmLivre = new JMenuItem("Livre");
 		mntmLivre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Fenetre_ajouter_livre f = new Fenetre_ajouter_livre();
+				Fenetre_ajouter_livre f = new Fenetre_ajouter_livre(controleur_mediatek.getMediatek());
 			}
 		});
 		mnAjouter.add(mntmLivre);
@@ -74,7 +77,7 @@ public class MyJFrame extends JFrame {
 		JMenuItem mntmMusique = new JMenuItem("Musique");
 		mntmMusique.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Fenetre_ajouter_musique f = new Fenetre_ajouter_musique();
+				Fenetre_ajouter_musique f = new Fenetre_ajouter_musique(controleur_mediatek.getMediatek());
 			}
 		});
 		mnAjouter.add(mntmMusique);
@@ -83,7 +86,7 @@ public class MyJFrame extends JFrame {
 		JMenuItem mntmSupprimer = new JMenuItem("Supprimer");
 		mntmSupprimer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Fenetre_supprimer_document f = new Fenetre_supprimer_document();
+				Fenetre_supprimer_document f = new Fenetre_supprimer_document(controleur_mediatek.getMediatek());
 			}
 		});
 		mnDocument.add(mntmSupprimer);
@@ -95,7 +98,7 @@ public class MyJFrame extends JFrame {
 		mntmPret.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Fenetre_effectuer_pret f = new Fenetre_effectuer_pret();
+				Fenetre_effectuer_pret f = new Fenetre_effectuer_pret(controleur_mediatek.getMediatek());
 			}
 		});
 		mnDocument.add(mntmPret);
@@ -105,7 +108,7 @@ public class MyJFrame extends JFrame {
 		mntmRetour.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Fenetre_effectuer_retour f = new Fenetre_effectuer_retour();
+				Fenetre_effectuer_retour f = new Fenetre_effectuer_retour(controleur_mediatek.getMediatek());
 			}
 		});
 		mnDocument.add(mntmRetour);

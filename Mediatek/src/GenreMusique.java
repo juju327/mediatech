@@ -1,5 +1,7 @@
+import java.io.Serializable;
 
-public enum GenreMusique {
+
+public enum GenreMusique implements Serializable {
 	Rock,
 	Jazz,
 	Classique,

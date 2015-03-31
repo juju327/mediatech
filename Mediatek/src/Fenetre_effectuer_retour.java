@@ -20,7 +20,7 @@ public class Fenetre_effectuer_retour extends JFrame  {
 	private JTextField reference;	
 	private JTextField referenceDocument;
 	
-	public Fenetre_effectuer_retour() {
+	public Fenetre_effectuer_retour(Mediatek mediatek) {
 		setTitle("Effectuer un retour");
 		
 		setBounds(250, 250, 950, 462);

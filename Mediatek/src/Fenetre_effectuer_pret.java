@@ -21,7 +21,7 @@ public class Fenetre_effectuer_pret extends JFrame  {
 	private JTextField numeroAbonne;
 	private JTextField referenceDocument;
 	
-	public Fenetre_effectuer_pret() {
+	public Fenetre_effectuer_pret(Mediatek mediatek) {
 		setTitle("Effectuer un prêt");
 		
 		setBounds(250, 250, 950, 462);

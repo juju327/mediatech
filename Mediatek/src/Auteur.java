@@ -1,4 +1,6 @@
-public class Auteur {
+import java.io.Serializable;
+
+public class Auteur  implements Serializable{
 	private String nom ;
 	private String prenom ;
 	private String nationalité ;

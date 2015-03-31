@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public abstract class Document {
+public abstract class Document implements Serializable{
 	private String titre ;
 	private String dateParution ;
 	private String reference ;

@@ -16,7 +16,7 @@ import javax.swing.DefaultComboBoxModel;
 
 public class Fenetre_supprimer_document extends JFrame  {
 	private JTextField reference;	
-	public Fenetre_supprimer_document() {
+	public Fenetre_supprimer_document(Mediatek mediatek) {
 		setTitle("Supprimer un document");
 		getContentPane().setLayout(null);
 		

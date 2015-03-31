@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 
 public class Controleur_documents extends Controleur {
+	
 	public boolean creerLivre(String titre, String date, String numISBN, GenreLivre genre, ArrayList<Auteur> auteurs) {
 		
 		// si les champs ne sont pas vides
@@ -16,8 +17,12 @@ public class Controleur_documents extends Controleur {
 		return false;
 	}
 	
-	public Controleur_documents(){
-		super();
+	public Controleur_documents(Mediatek mediatek){
+		super(mediatek);
 		
+	}
+	
+	public void save(){
+		getMediatek().saveDB();
 	}
 }

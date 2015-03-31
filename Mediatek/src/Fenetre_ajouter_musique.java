@@ -16,7 +16,7 @@ public class Fenetre_ajouter_musique extends JFrame  {
 	private JTextField champ_titre;
 	private JTextField champs_dateParution;
 	
-	public Fenetre_ajouter_musique() {
+	public Fenetre_ajouter_musique(Mediatek mediatek) {
 		setTitle("Ajouter un livre");
 		getContentPane().setLayout(null);
 		

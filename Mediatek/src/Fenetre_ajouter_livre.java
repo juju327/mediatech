@@ -23,8 +23,8 @@ public class Fenetre_ajouter_livre extends JFrame {
 	private JTextField champ_auteur;
 	private Controleur_documents controleur_doc;
 
-	public Fenetre_ajouter_livre() {
-		controleur_doc = new Controleur_documents();
+	public Fenetre_ajouter_livre(Mediatek mediatek) {
+		controleur_doc = new Controleur_documents(mediatek);
 		setTitle("Ajouter un livre");
 		getContentPane().setLayout(null);
 
@@ -102,6 +102,9 @@ public class Fenetre_ajouter_livre extends JFrame {
 					if (result == JOptionPane.YES_OPTION) {
 						controleur_doc.creerLivre(titre, date, numISBN, genre,
 								auteurs);
+						controleur_doc.save();
+						// TODO ici on ne sait pas pourquoi ça ne sauvegarde pas !
+						
 					}
 
 				}

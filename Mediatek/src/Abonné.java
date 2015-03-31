@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 //coucou
 
-public class Abonné {
+public class Abonné implements Serializable{
 
 	// hello ?
 	// je suis toute seule

@@ -1,5 +1,7 @@
+import java.io.Serializable;
 
-public class Parametres {
+
+public class Parametres  implements Serializable{
 	
 	private int quotaGlobal ;
 	private int quotaLivre;

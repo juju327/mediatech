@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.Date;
 
 
-public class Emprunt {
+public class Emprunt implements Serializable{
 	
 	private Document pret;
 	private Abonné emprunteur;	
