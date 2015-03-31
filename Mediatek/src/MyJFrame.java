@@ -90,11 +90,24 @@ public class MyJFrame extends JFrame {
 		
 		mnDocument.addSeparator();
 		
-		// DOCUMENT -> PRET / RETOUR
+		// DOCUMENT -> PRET
 		JMenuItem mntmPret = new JMenuItem("Effectuer un prêt");
+		mntmPret.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Fenetre_effectuer_pret f = new Fenetre_effectuer_pret();
+			}
+		});
 		mnDocument.add(mntmPret);
 		
+		// DOCUMENT -> RETOUR
 		JMenuItem mntmRetour = new JMenuItem("Effectuer un retour");
+		mntmRetour.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Fenetre_effectuer_retour f = new Fenetre_effectuer_retour();
+			}
+		});
 		mnDocument.add(mntmRetour);
 		
 		mnDocument.addSeparator();
@@ -109,8 +122,29 @@ public class MyJFrame extends JFrame {
 		mnDocument.add(mntmQuitter);
 
 		// ABONNE
-		JMenu mnAbonn = new JMenu("Abonné");
-		menuBar.add(mnAbonn);
+		JMenu mnAbonne = new JMenu("Abonné");
+		menuBar.add(mnAbonne);
+		
+		// ABONNE -> AJOUTER
+		JMenuItem mntmAjouterAbonne = new JMenuItem("Ajouter");
+		mntmAjouterAbonne.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		mnAbonne.add(mntmAjouterAbonne);
+		
+		// ABONNE -> SUPPRIMER
+		JMenuItem mntmsupprimerAbonne = new JMenuItem("Supprimer");
+		mntmsupprimerAbonne.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub		
+			}
+		});
+		mnAbonne.add(mntmsupprimerAbonne);
 		
 		// RECHERCHE
 		JMenu mnRecherche = new JMenu("Recherche");
@@ -137,8 +171,15 @@ public class MyJFrame extends JFrame {
 		mnRecherche.add(mntmRechercheDocument);
 		
 		// ADMINISTATION
-		JMenu mnAdministation = new JMenu("Administration");
-		menuBar.add(mnAdministation);
+		JMenuItem mntmAdministation = new JMenu("Administration");
+		mntmAdministation.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		menuBar.add(mntmAdministation);
 		
 		JPopupMenu popupMenu = new JPopupMenu();
 		addPopup(this, popupMenu);
