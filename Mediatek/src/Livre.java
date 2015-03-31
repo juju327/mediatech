@@ -8,9 +8,9 @@ public class Livre extends Document {
 	
 	public Livre(String titre, String dateParution, String numeroISBN ,GenreLivre genre, ArrayList<Auteur> auteurs) {
 		super(titre,dateParution, auteurs);
-		createReference(titre, dateParution);
 		setNumeroISBN(numeroISBN);
 		setGenre(genre);
+		createReference(titre, dateParution);
 	}
 
 	public String getNumeroISBN() {

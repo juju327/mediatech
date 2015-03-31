@@ -90,17 +90,18 @@ public class Fenetre_ajouter_livre extends JFrame {
 
 				if (!titre.isEmpty() && !numISBN.isEmpty()
 						&& !auteurs.isEmpty() && !date.isEmpty()) {
-					int result = JOptionPane.showConfirmDialog(frame,
-							"Êtes-vous sûr de vouloir ajouter ce document: Titre:\""
-									+ titre + "\" Date de parution:\"" + date
-									+ "\" Auteur:\"" + aut + "\" Genre : \""
-									+ genre.toString() + "\"");
+					int result = JOptionPane
+							.showConfirmDialog(
+									frame,
+									"Êtes-vous sûr de vouloir ajouter ce document: Titre:\""
+											+ titre + "\" Auteur:\"" + aut
+											+ "\" Date de parution:\"" + date
+											+ "\" Genre : \""
+											+ genre.toString() + "\"");
 					// TODO gérer l'affichage des auteurs multiples
 					if (result == JOptionPane.YES_OPTION) {
-						// TODO on est ici exception du creerLivre à traiter !!!!
 						controleur_doc.creerLivre(titre, date, numISBN, genre,
 								auteurs);
-						// champ_titre.setText("hello");
 					}
 
 				}

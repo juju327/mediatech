@@ -108,8 +108,8 @@ public class Mediatek {
 	 * @return une date issue de la string donnée, null sinon
 	 */
 	public Date stringToDate(String d){
-
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
+		/*	
+		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
 		Date date = null;
 		try
 		{
@@ -117,6 +117,20 @@ public class Mediatek {
 		} catch (ParseException e){
 		  e.printStackTrace();
 		} 
+		return date;
+		*/
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		String dateInString = d;
+		Date date = new Date();
+		try {
+			
+			date = formatter.parse(dateInString);
+			System.out.println(date);
+			System.out.println(formatter.format(date));
+	 
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		return date;
 	}
 	
