@@ -32,5 +32,5 @@ public class Controleur_Recherche extends Controleur{
 		return trouve ;
 	}
 	
-
+  
 }
