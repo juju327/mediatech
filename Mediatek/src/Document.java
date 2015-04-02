@@ -60,7 +60,10 @@ public abstract class Document implements Serializable{
 	 * @param auteur : Auteur (qui a publié le livre)
 	 */
 	public void addAuteur(Auteur auteur){
-		getAuteurs().add(auteur);
+		if(!getAuteurs().contains(auteur)){
+			getAuteurs().add(auteur);
+			auteur.addAPublie(this);
+		}
 	}
 	
 	/**
@@ -71,7 +74,7 @@ public abstract class Document implements Serializable{
 		getAuteurs().remove(auteur);
 	}
 	
-	public abstract void createReference(String titre, String dateParution);
+	protected abstract void createReference(String titre, String dateParution);
 	
 	
 }
