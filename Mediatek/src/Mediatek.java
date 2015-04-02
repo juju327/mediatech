@@ -132,8 +132,8 @@ public class Mediatek {
 		try {
 			
 			date = formatter.parse(dateInString);
-			System.out.println(date);
-			System.out.println(formatter.format(date));
+			//System.out.println(date);
+			//System.out.println(formatter.format(date));
 	 
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -249,6 +249,8 @@ public class Mediatek {
                  documents = (HashMap<String,Document>) ois.readObject();
                  emprunts = (ArrayList<Emprunt>) ois.readObject();
                  
+                 //afficher();
+                 
              }             
              catch(Exception e) {
                  System.out.println("LOAD" + e);
@@ -269,5 +271,5 @@ public class Mediatek {
          return success;
      }
 
-    
+     //
 }
