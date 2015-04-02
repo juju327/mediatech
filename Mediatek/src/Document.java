@@ -12,7 +12,6 @@ public abstract class Document implements Serializable{
 	public Document(String titre, String dateParution, ArrayList<Auteur> auteurs) {
 		setTitre(titre);
 		setDateParution(dateParution);
-		createReference(titre, dateParution);
 		setDisponible(true);
 		setAuteurs(auteurs);
 	}
@@ -74,7 +73,7 @@ public abstract class Document implements Serializable{
 		getAuteurs().remove(auteur);
 	}
 	
-	protected abstract void createReference(String titre, String dateParution);
+	protected abstract void createReference();
 	
 	/*protected Genre getGenre(){
 		

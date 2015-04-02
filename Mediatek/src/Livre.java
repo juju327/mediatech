@@ -10,7 +10,7 @@ public class Livre extends Document {
 		super(titre,dateParution, auteurs);
 		setNumeroISBN(numeroISBN);
 		setGenre(genre);
-		createReference(titre, dateParution);
+		createReference();
 	}
 
 	public String getNumeroISBN() {
@@ -30,8 +30,8 @@ public class Livre extends Document {
 	}
 
 	@Override
-	protected void createReference(String titre, String dateParution) {
-		newReference("L-"+getNumeroISBN()+"-"+getGenre()+"-"+dateParution);	
+	protected void createReference() {
+		newReference("L-"+getNumeroISBN()+"-"+getGenre()+"-"+getDateParution());	
 	}
 	
 	

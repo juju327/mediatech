@@ -1,6 +1,7 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 //coucou
 
 public class Abonné implements Serializable{
@@ -14,12 +15,12 @@ public class Abonné implements Serializable{
 	private ArrayList<Emprunt> emprunts;
 	
 	// Constructor
-	public Abonné(String nom, String prenom, String adresse, Date date, String num){
+	public Abonné(String nom, String prenom, String adresse, Date date){
 		setNom(nom);
 		setPrenom(prenom);
 		setAdresse(adresse);
 		setDateNaissance(date);
-		setNumero(num);
+		createNumeroAbo();
 		emprunts = new ArrayList<Emprunt>();
 	}
 	
@@ -78,6 +79,11 @@ public class Abonné implements Serializable{
 		emprunts.remove(emprunt);
 	}
 	
-	// it's a com!
+	
+	private void createNumeroAbo(){
+		Random random = new Random();
+		setNumero("A"+getNom().charAt(0)+getPrenom().charAt(0)+random.nextInt(10)+random.nextInt(10));
+		
+	}
 
 }
