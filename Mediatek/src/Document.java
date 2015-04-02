@@ -1,3 +1,5 @@
+
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -75,7 +77,7 @@ public abstract class Document implements Serializable{
 	
 	protected abstract void createReference();
 	
-	protected abstract Genre getGenre();
+	public abstract Genre getGenre();
 	
 	
 }

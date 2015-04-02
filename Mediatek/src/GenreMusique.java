@@ -1,3 +1,4 @@
+
 import java.io.Serializable;
 
 public enum GenreMusique implements Serializable, Genre {
