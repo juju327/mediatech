@@ -40,6 +40,11 @@ public class Auteur  implements Serializable{
 		return apublie;
 	}
 
+	/**
+	 * Ajoute le document à la liste des documents publiés par l'auteur
+	 * Il demande aussi l'ajout de l'auteur à la liste d'auteur du document en question
+	 * @param document à associé à l'auteur
+	 */
 	public void addAPublie(Document document){
 		if(!getAPublie().contains(document)){
 			getAPublie().add(document);
