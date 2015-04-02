@@ -12,8 +12,10 @@ public class Controleur_Recherche extends Controleur{
 	 * @param reference : String : une reference de livre
 	 * @return Document correspondant à la reference
 	 */
-	public Document rechercheParReference(String reference){
-		return getMediatek().getDocuments().get(reference) ;
+	public HashMap<String, Document> rechercheParReference(String reference){
+		HashMap<String,Document> trouve = new HashMap<String, Document>();
+		trouve.put(reference,getMediatek().getDocuments().get(reference ));
+		return trouve ;
 	}
 	
 	/**
