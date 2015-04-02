@@ -20,8 +20,8 @@ public class Musique extends Document{
 	}
 
 	@Override
-	protected void createReference(String titre, String dateParution) {
-		newReference("M-"+titre+"-"+genre+"-"+dateParution);	
+	protected void createReference() {
+		newReference("M-"+getTitre()+"-"+getGenre()+"-"+getDateParution());	
 		
 	}
 }
