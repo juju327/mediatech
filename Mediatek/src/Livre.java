@@ -30,7 +30,7 @@ public class Livre extends Document {
 	}
 
 	@Override
-	public void createReference(String titre, String dateParution) {
+	protected void createReference(String titre, String dateParution) {
 		newReference("L-"+getNumeroISBN()+"-"+getGenre()+"-"+dateParution);	
 	}
 	

@@ -1,9 +1,12 @@
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Auteur  implements Serializable{
 	private String nom ;
 	private String prenom ;
 	private String nationalité ;
+	private ArrayList<Document> apublie ;
 	
 	public Auteur(String nom) {
 		setNom(nom);
@@ -32,8 +35,18 @@ public class Auteur  implements Serializable{
 	private void setNationalité(String nationalité) {
 		this.nationalité = nationalité;
 	}
+	
+	public ArrayList<Document> getAPublie(){
+		return apublie;
+	}
 
-
+	public void addAPublie(Document document){
+		if(!getAPublie().contains(document)){
+			getAPublie().add(document);
+			document.addAuteur(this);
+		}
+		
+	}
 	
 	
 	
