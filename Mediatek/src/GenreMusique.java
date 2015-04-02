@@ -17,5 +17,9 @@ public enum GenreMusique implements Serializable, Genre {
 	@Override
 	public String toString() {
 		return name;
+	}	
+
+	public GenreMusique getGenre(){
+		return this;
 	}
 }

@@ -19,5 +19,9 @@ public enum GenreLivre implements Serializable, Genre{
 		return name;
 	}
 	
+	public GenreLivre getGenre(){
+		return this;
+	}
+	
 		
 }

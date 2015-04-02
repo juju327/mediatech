@@ -67,7 +67,12 @@ public class Fenetre_ajouter_livre extends JFrame {
 
 		genreLivre.setBounds(255, 300, 96, 24);
 		getContentPane().add(genreLivre);
-
+		
+		// TODO a supprimer avant de rendre
+		champ_dateParution.setText("01/01/2000");
+		champ_auteur.setText("monsuperAuteur");
+		champ_titre.setText("monsuperTitre");
+		
 		JButton btnAjouter = new JButton("Ajouter");
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -103,7 +108,6 @@ public class Fenetre_ajouter_livre extends JFrame {
 						controleur_doc.creerLivre(titre, date, numISBN, genre,
 								auteurs);
 						controleur_doc.save();
-						// TODO ici on ne sait pas pourquoi ça ne sauvegarde pas !
 						
 					}
 

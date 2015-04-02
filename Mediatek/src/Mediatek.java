@@ -247,25 +247,31 @@ public class Mediatek {
                  
                 // numDerMonit = ois.readInt();
                  
+                 
                  // on rajoute les abonnés qui existent dans le fichier à ceux qui existent
                  // déjà au lieu de tout supprimer à chaque ouverture du logiciel
-                 HashMap<String,Abonné> abo_tmp =  (HashMap<String,Abonné>) ois.readObject();
+                  /*
+                 
+                 HashMap<String,Abonné> abo_tmp =  new HashMap<>((HashMap<String,Abonné>) ois.readObject());
                  for(Abonné a : abo_tmp.values() ){
                 	 abonnes.put(a.getNumero(), a);
                  }
                  
-                 HashMap<String,Document> doc_tmp = (HashMap<String,Document>) ois.readObject();
+                 HashMap<String,Document> doc_tmp = new HashMap<>((HashMap<String,Document>) ois.readObject());
                  for(Document d : doc_tmp.values() ){
                 	 documents.put(d.getReference(), d);
-                 }
-                  
-                 ArrayList<Emprunt> emp_tmp = (ArrayList<Emprunt>) ois.readObject();
+                 }*/
+                  /*
+                 ArrayList<Emprunt> emp_tmp =  new ArrayList<Emprunt>((ArrayList<Emprunt>) ois.readObject());
                  for(int i=0; i<emp_tmp.size(); i++){
                 	 emprunts.add(emp_tmp.get(i));
                  }
-                 //abonnes = (HashMap<String,Abonné>) ois.readObject();
-                 //documents = (HashMap<String,Document>) ois.readObject();
-                 //emprunts = (ArrayList<Emprunt>) ois.readObject();
+                */
+                 abonnes = (HashMap<String,Abonné>) ois.readObject();
+                 documents = (HashMap<String,Document>) ois.readObject();
+                 
+                 // TODO exception ici ?
+                 emprunts = (ArrayList<Emprunt>) ois.readObject();
                  
                  afficher();
                  
@@ -298,7 +304,7 @@ public class Mediatek {
     	 
     	 System.out.println("Liste de documents\n ");
     	 for(Document d : documents.values()){
-    		 //System.out.println("titre : "+d.getTitre() + " date de parution : " + d.getDateParution() + d.getGenre());
+    		 System.out.println("titre : "+d.getTitre() + " date de parution : " + d.getDateParution() + d.getGenre());
     	 }
      }
 }
