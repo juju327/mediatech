@@ -1,7 +1,8 @@
-
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -72,7 +73,7 @@ public class Fenetre_ajouter_livre extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String titre = champ_titre.getText();
 				String aut = champ_auteur.getText();
-				String date = champ_dateParution.getText();
+				String dateString = champ_dateParution.getText();
 				String numISBN = champ_numeroISBN.getText();
 				GenreLivre genre = (GenreLivre) genreLivre.getSelectedItem();
 
@@ -86,29 +87,70 @@ public class Fenetre_ajouter_livre extends JFrame {
 				}
 
 				JFrame frame = new JFrame();
-
+				boolean dateJuste = controleur_doc.verifDate(dateString);
+				boolean numDispo = !controleur_doc.numISBNExiste(numISBN);
+				// contrôle de la saisie
 				if (!titre.isEmpty() && !numISBN.isEmpty()
-						&& !auteurs.isEmpty() && !date.isEmpty()) {
-					int result = JOptionPane
-							.showConfirmDialog(
-									frame,
-									"Êtes-vous sûr de vouloir ajouter ce document: Titre:\""
-											+ titre + "\" Auteur:\"" + aut
-											+ "\" Date de parution:\"" + date
-											+ "\" Genre : \""
-											+ genre.toString() + "\"");
-					// TODO gérer l'affichage des auteurs multiples
-					if (result == JOptionPane.YES_OPTION) {
-						controleur_doc.creerLivre(titre, date, numISBN, genre,
-								auteurs);
-						controleur_doc.save();
+						&& !auteurs.isEmpty() && !dateString.isEmpty()
+						&& numDispo && dateJuste) {
 
+					// l'utilisateur confirme sa saisie
+					int result = JOptionPane
+							.showConfirmDialog(frame,
+									"Êtes-vous sûr de vouloir ajouter ce livre: Titre:\""
+											+ titre + "\" Auteur:\"" + aut
+											+ "\" Date de parution:\""
+											+ dateString + "\" Genre : \""
+											+ genre.toString() + "\"", "Confirmation", JOptionPane.OK_CANCEL_OPTION);
+
+					// on crée le livre
+					if (result == JOptionPane.YES_OPTION) {
+						controleur_doc.creerLivre(titre, dateString, numISBN,
+								genre, auteurs);
+						controleur_doc.save();
 					}
 
+					// saisie invalide
 				} else {
-					// TODO afficher une fenêtre expliquant que tous les champs
-					// doivent être remplis
+
+					if (titre.isEmpty())
+						champ_titre.setBackground(Color.red);
+					else
+						champ_titre.setBackground(Color.white);
+
+					if (aut.isEmpty())
+						champ_auteur.setBackground(Color.red);
+					else
+						champ_auteur.setBackground(Color.white);
+
+					if (dateString.isEmpty())
+						champ_dateParution.setBackground(Color.red);
+					else
+						champ_dateParution.setBackground(Color.white);
+
+					if (numISBN.isEmpty())
+						champ_numeroISBN.setBackground(Color.red);
+					else
+						champ_numeroISBN.setBackground(Color.white);
+
+					if (!dateJuste) {
+						JOptionPane
+								.showMessageDialog(null,
+										"La date saisie n'est pas valide.",
+										"Erreur de saisie",
+										JOptionPane.WARNING_MESSAGE);
+					}
+
+					if (!numDispo) {
+						JOptionPane
+								.showMessageDialog(null,
+										"Le numéro ISBN demandé existe déjà.",
+										"Erreur de saisie",
+										JOptionPane.WARNING_MESSAGE);
+					}
+
 				}
+
 			}
 		});
 		btnAjouter.setBounds(448, 300, 117, 25);
@@ -122,5 +164,4 @@ public class Fenetre_ajouter_livre extends JFrame {
 
 		setVisible(true);
 	}
-
 }
