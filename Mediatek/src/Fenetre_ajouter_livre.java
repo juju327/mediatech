@@ -23,8 +23,8 @@ public class Fenetre_ajouter_livre extends JFrame {
 	private JTextField champ_auteur;
 	private Controleur_documents controleur_doc;
 
-	public Fenetre_ajouter_livre(Mediatek mediatek) {
-		controleur_doc = new Controleur_documents(mediatek);
+	public Fenetre_ajouter_livre(Controleur_documents c) {
+		controleur_doc = c;
 		setTitle("Ajouter un livre");
 		getContentPane().setLayout(null);
 
@@ -67,12 +67,12 @@ public class Fenetre_ajouter_livre extends JFrame {
 
 		genreLivre.setBounds(255, 300, 96, 24);
 		getContentPane().add(genreLivre);
-		
+
 		// TODO a supprimer avant de rendre
 		champ_dateParution.setText("01/01/2000");
 		champ_auteur.setText("monsuperAuteur");
 		champ_titre.setText("monsuperTitre");
-		
+
 		JButton btnAjouter = new JButton("Ajouter");
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -108,11 +108,12 @@ public class Fenetre_ajouter_livre extends JFrame {
 						controleur_doc.creerLivre(titre, date, numISBN, genre,
 								auteurs);
 						controleur_doc.save();
-						
+
 					}
 
 				} else {
-					// TODO afficher une fenêtre expliquant que tous les champs doivent être remplis
+					// TODO afficher une fenêtre expliquant que tous les champs
+					// doivent être remplis
 				}
 			}
 		});

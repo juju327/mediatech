@@ -186,6 +186,7 @@ public class Mediatek {
     	
     	setDocuments(new HashMap<String, Document>());
 		setAbonnes(new HashMap<String, Abonné>());
+		setEmprunts(new ArrayList<Emprunt>());
     }
     
     /**
@@ -304,7 +305,7 @@ public class Mediatek {
     	 
     	 System.out.println("Liste de documents\n ");
     	 for(Document d : documents.values()){
-    		 System.out.println("titre : "+d.getTitre() + " date de parution : " + d.getDateParution() + d.getGenre());
+    		 System.out.println("titre : "+d.getTitre() + " date de parution : " + d.getDateParution() + " genre : "+ d.getGenre());
     	 }
      }
 }

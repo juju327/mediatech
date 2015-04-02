@@ -15,8 +15,10 @@ import javax.swing.DefaultComboBoxModel;
 public class Fenetre_ajouter_musique extends JFrame  {
 	private JTextField champ_titre;
 	private JTextField champs_dateParution;
+	private Controleur_documents controleur_doc;
 	
-	public Fenetre_ajouter_musique(Mediatek mediatek) {
+	public Fenetre_ajouter_musique(Controleur_documents c) {
+		controleur_doc = c;
 		setTitle("Ajouter un livre");
 		getContentPane().setLayout(null);
 		

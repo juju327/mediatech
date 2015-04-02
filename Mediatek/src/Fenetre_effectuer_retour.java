@@ -19,8 +19,10 @@ import javax.swing.JEditorPane;
 public class Fenetre_effectuer_retour extends JFrame  {
 	private JTextField reference;	
 	private JTextField referenceDocument;
+	private Controleur_documents controleur_doc;
 	
-	public Fenetre_effectuer_retour(Mediatek mediatek) {
+	public Fenetre_effectuer_retour(Controleur_documents c) {
+		controleur_doc = c;
 		setTitle("Effectuer un retour");
 		
 		setBounds(250, 250, 950, 462);
