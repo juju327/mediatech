@@ -26,12 +26,14 @@ public class MyJFrame extends JFrame {
 
 	private JPanel contentPane;
 	private static Controleur_documents controleur_doc;
+	private static Controleur_Recherche controleur_recherche;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		controleur_doc = new Controleur_documents(new Mediatek());
+		controleur_recherche = new Controleur_Recherche(controleur_doc.getMediatek());
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -77,7 +79,8 @@ public class MyJFrame extends JFrame {
 		JMenuItem mntmMusique = new JMenuItem("Musique");
 		mntmMusique.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Fenetre_ajouter_musique f = new Fenetre_ajouter_musique(controleur_doc);
+				Fenetre_ajouter_musique f = new Fenetre_ajouter_musique(
+						controleur_doc);
 			}
 		});
 		mnAjouter.add(mntmMusique);
@@ -86,7 +89,8 @@ public class MyJFrame extends JFrame {
 		JMenuItem mntmSupprimer = new JMenuItem("Supprimer");
 		mntmSupprimer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Fenetre_supprimer_document f = new Fenetre_supprimer_document(controleur_doc);
+				Fenetre_supprimer_document f = new Fenetre_supprimer_document(
+						controleur_doc);
 			}
 		});
 		mnDocument.add(mntmSupprimer);
@@ -98,7 +102,8 @@ public class MyJFrame extends JFrame {
 		mntmPret.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Fenetre_effectuer_pret f = new Fenetre_effectuer_pret(controleur_doc);
+				Fenetre_effectuer_pret f = new Fenetre_effectuer_pret(
+						controleur_doc);
 			}
 		});
 		mnDocument.add(mntmPret);
@@ -108,7 +113,8 @@ public class MyJFrame extends JFrame {
 		mntmRetour.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Fenetre_effectuer_retour f = new Fenetre_effectuer_retour(controleur_doc);
+				Fenetre_effectuer_retour f = new Fenetre_effectuer_retour(
+						controleur_doc);
 			}
 		});
 		mnDocument.add(mntmRetour);
@@ -148,7 +154,6 @@ public class MyJFrame extends JFrame {
 			}
 		});
 		mnAbonne.add(mntmsupprimerAbonne);
-
 		// RECHERCHE
 		JMenu mnRecherche = new JMenu("Recherche");
 		menuBar.add(mnRecherche);
@@ -164,11 +169,12 @@ public class MyJFrame extends JFrame {
 		mnRecherche.add(mntmRechercheAuteur);
 
 		// RECHERCHE -> DOCUMENT
-		JMenuItem mntmRechercheDocument = new JMenuItem("Par document");
-		mntmRechercheAuteur.addActionListener(new ActionListener() {
+		JMenuItem mntmRechercheDocument = new JMenuItem("Par titre de document");
+		mntmRechercheDocument.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
+				Fenetre_recherche_titre f = new Fenetre_recherche_titre(
+						controleur_recherche);
 			}
 		});
 		mnRecherche.add(mntmRechercheDocument);

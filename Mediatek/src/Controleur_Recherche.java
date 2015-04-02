@@ -25,7 +25,7 @@ public class Controleur_Recherche extends Controleur{
 	 */
 	public HashMap<String,Document> rechercheParTitre(String mots){
 		HashMap<String,Document> trouve = new HashMap<String, Document>();
-		 getMediatek().getDocuments() ;
+		 
 		for (HashMap.Entry<String, Document> entry : getMediatek().getDocuments().entrySet()) {
 			if(entry.getValue().getTitre().contains(mots)){
 				trouve.put(entry.getKey(), entry.getValue());
