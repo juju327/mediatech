@@ -50,7 +50,7 @@ public class Auteur  implements Serializable{
 			getAPublie().add(document);
 			document.addAuteur(this);
 		}
-		
+		//212121
 	}
 	
 	
