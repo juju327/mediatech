@@ -1,7 +1,7 @@
 import java.io.Serializable;
 
 
-public enum GenreLivre implements Serializable{
+public enum GenreLivre implements Serializable, Genre{
 	Roman ("Roman"),
 	BD ("BD"),
 	Documentaire ("Documentaire"),
