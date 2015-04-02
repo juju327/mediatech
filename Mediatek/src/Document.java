@@ -76,5 +76,8 @@ public abstract class Document implements Serializable{
 	
 	protected abstract void createReference(String titre, String dateParution);
 	
+	/*protected Genre getGenre(){
+		
+	}*/
 	
 }
