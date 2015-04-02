@@ -107,6 +107,8 @@ public class Fenetre_ajouter_livre extends JFrame {
 						
 					}
 
+				} else {
+					// TODO afficher une fenêtre expliquant que tous les champs doivent être remplis
 				}
 			}
 		});

@@ -27,7 +27,8 @@ public class Mediatek {
 	private static ConcreteFactory factory;
 
 	public Mediatek(){
-		
+		newDB();
+		loadDB();
 	}
 
 
@@ -245,11 +246,12 @@ public class Mediatek {
                  ois = new ObjectInputStream(fis);
                  
                 // numDerMonit = ois.readInt();
+                // for(Abonné a: )
                  abonnes = (HashMap<String,Abonné>) ois.readObject();
                  documents = (HashMap<String,Document>) ois.readObject();
                  emprunts = (ArrayList<Emprunt>) ois.readObject();
                  
-                 //afficher();
+                 afficher();
                  
              }             
              catch(Exception e) {
@@ -271,5 +273,15 @@ public class Mediatek {
          return success;
      }
 
-     //
+     public void afficher(){
+    	 System.out.println("Liste d'abonnés \n");
+    	 for(Abonné a : abonnes.values()){
+    		 System.out.println("nom : "+a.getNom() + " numero" + a.getNumero() );
+    	 }
+    	 
+    	 System.out.println("Liste de documents\n ");
+    	 for(Document d : documents.values()){
+    		 System.out.println("titre : "+d.getTitre() + " date de parution : " + d.getDateParution());
+    	 }
+     }
 }
