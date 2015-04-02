@@ -22,7 +22,7 @@ public class Mediatek {
 	private HashMap<String,Document> documents;
 	private HashMap<String,Abonné> abonnes;	
 	// fichier de sérialisation
-	private static final String file_db ="mediatek.db";
+	private static final String file_db ="data.db";
 
 	private static ConcreteFactory factory;
 
