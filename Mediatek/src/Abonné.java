@@ -5,8 +5,7 @@ import java.util.Date;
 
 public class Abonné implements Serializable{
 
-	// hello ?
-	// je suis toute seule
+	// ouaish
 	private String nom;
 	private String prenom;
 	private String adresse;
