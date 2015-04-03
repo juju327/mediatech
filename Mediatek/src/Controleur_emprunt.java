@@ -1,16 +1,7 @@
 
 
-public class EmpruntControleur {
+public class Controleur_emprunt {
 	private Mediatek laMediatek = new Mediatek() ;
-	
-	/**
-	 * Recherche si le numéro d'abonné passé en paramètre appartient à la liste des abonnés de la médiatech.
-	 * @param numeroAbo : numéro d'un abonné
-	 * @return true si le numéro d'abonné existe sinon false
-	 */
-	public Abonné numeroAbonneValide(String numeroAbo){
-		return laMediatek.getAbonnes().get(numeroAbo) ;
-	}
 	
 	/**
 	 * Recherche si le quota globale (nombre total d'emprunt) de l'abonné n'est pas dépassé grâce 

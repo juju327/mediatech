@@ -61,4 +61,13 @@ public abstract class Controleur {
 
 		return date;
 	}
+	
+	/**
+	 * Recherche si le numéro d'abonné passé en paramètre appartient à la liste des abonnés de la médiatech.
+	 * @param numeroAbo : numéro d'un abonné
+	 * @return true si le numéro d'abonné existe sinon false
+	 */
+	public Abonné numeroAbonneValide(String numeroAbo){
+		return mediatek.getAbonnes().get(numeroAbo) ;
+	}
 }
