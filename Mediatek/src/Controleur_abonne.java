@@ -54,5 +54,13 @@ public class Controleur_abonne extends Controleur {
 			String dateN) {
 		return getMediatek().ajouterAbonne(nom, prenom, adresse, dateN);
 	}
-
+	
+	/**
+	 * 
+	 * @param num
+	 * @return l'abonné de numéro num
+	 */
+	public Abonne getAbonne(String num) {
+		return (getMediatek().getAbonnes().get(num));
+	}
 }

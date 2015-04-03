@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Map.Entry;
 
 
@@ -54,6 +55,40 @@ public class Controleur_emprunt extends Controleur{
 		}else{
 			return true;
 		}
+	}
+	
+	/**
+	 * emprunte un document pour un abonné
+	 * 
+	 * @param refDoc
+	 *            la référence du document à emprunter
+	 * @param numAb
+	 *            le numéro de l'abonné
+	 */
+	public void faireEmprunt(Document doc, Abonne abonne){
+		Date dateJour = new Date();
+		
+		Date dateRetour = addToDate(new Date(), getMediatek().getParametres().getTempsMaxLivre());
+			
+		Emprunt emprunt = new Emprunt(doc, abonne, dateJour, dateRetour);
+		abonne.emprunter(emprunt);
+		getMediatek().addEmprunt(emprunt);
+		emprunt.getPret().setDisponible(false);		
+	}
+
+	/**
+	 * retourne un document d'un abonné
+	 * 
+	 * @param refDoc
+	 *            la référence du document à rendre
+	 * @param numAb
+	 *            le numéro de l'abonné
+	 */
+	public void faireRetour(Emprunt emprunt, Abonne abonne) {
+		emprunt.getPret().setDisponible(true);
+		abonne.rendre(emprunt);
+		getMediatek().remove(emprunt);
+
 	}
 	
 

@@ -76,39 +76,7 @@ public class Mediatek {
 		this.controleur_documents = controleur_documents;
 	}
 
-	/**
-	 * emprunte un document pour un abonné
-	 * 
-	 * @param refDoc
-	 *            la référence du document à emprunter
-	 * @param numAb
-	 *            le numéro de l'abonné
-	 */
-	public void faireEmprunt(Document doc, Abonne abonne){
-		Date dateJour = new Date();
-		
-		Date dateRetour = controleur_documents.addToDate(new Date(), getParametres().getTempsMaxLivre());
-			
-		Emprunt emprunt = new Emprunt(doc, abonne, dateJour, dateRetour);
-		abonne.emprunter(emprunt);
-		emprunts.add(emprunt);
-		emprunt.getPret().setDisponible(false);		
-	}
 
-	/**
-	 * retourne un document d'un abonné
-	 * 
-	 * @param refDoc
-	 *            la référence du document à rendre
-	 * @param numAb
-	 *            le numéro de l'abonné
-	 */
-	public void faireRetour(Emprunt emprunt, Abonne abonne) {
-		emprunt.getPret().setDisponible(true);
-		abonne.rendre(emprunt);
-		emprunts.remove(emprunt);
-
-	}
 
 	/**
 	 * crée une instance unique (singleton) de ConcreteFactory pour produire des
@@ -309,5 +277,15 @@ public class Mediatek {
 					+ " date de parution : " + d.getDateParution()
 					+ " genre : " + d.getGenre());
 		}
+	}
+
+	public void addEmprunt(Emprunt emprunt) {
+		this.emprunts.add(emprunt);
+		
+	}
+
+	public void remove(Emprunt emprunt) {
+		this.emprunts.remove(emprunt);
+		
 	}
 }

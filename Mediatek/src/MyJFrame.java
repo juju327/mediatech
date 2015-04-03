@@ -19,6 +19,7 @@ public class MyJFrame extends JFrame {
 	private static Controleur_documents controleur_doc;
 	private static Controleur_Recherche controleur_recherche;
 	private static Controleur_abonne controleur_abonne;
+	private static Controleur_emprunt controleur_emprunt;
 
 	/**
 	 * Launch the application.
@@ -31,6 +32,7 @@ public class MyJFrame extends JFrame {
 		controleur_doc = new Controleur_documents(new Mediatek(p));
 		controleur_recherche = new Controleur_Recherche(controleur_doc.getMediatek());
 		controleur_abonne = new Controleur_abonne(controleur_doc.getMediatek());
+		controleur_emprunt = new Controleur_emprunt(controleur_doc.getMediatek());
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -99,7 +101,7 @@ public class MyJFrame extends JFrame {
 		mntmPret.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Fenetre_effectuer_pret f = new Fenetre_effectuer_pret(
+				Fenetre_effectuer_pret f = new Fenetre_effectuer_pret(controleur_emprunt, controleur_abonne,
 						controleur_doc);
 			}
 		});

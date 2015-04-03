@@ -1,4 +1,3 @@
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,10 +10,16 @@ public class Fenetre_effectuer_pret extends JFrame  {
 	private JTextField reference;	
 	private JTextField numeroAbonne;
 	private JTextField referenceDocument;
-	private Controleur_documents controleur_doc;
+	private Controleur_emprunt controleur_emprunt;
+	private Controleur_abonne controleur_abonne;
+	private Controleur_documents controleur_documents;
 	
-	public Fenetre_effectuer_pret(Controleur_documents c) {
-		controleur_doc = c;
+	
+	public Fenetre_effectuer_pret(Controleur_emprunt ce, Controleur_abonne ca, Controleur_documents cd) {
+		controleur_emprunt = ce;
+		controleur_abonne = ca;
+		controleur_documents = cd;
+		
 		setTitle("Effectuer un prêt");
 		
 		setBounds(250, 250, 950, 462);
@@ -29,7 +34,18 @@ public class Fenetre_effectuer_pret extends JFrame  {
 		getContentPane().add(numeroAbonne);
 		numeroAbonne.setColumns(10);
 		
+		JLabel lblTrouve = new JLabel("Abonné trouvé !");
+		lblTrouve.setBounds(408, 163, 114, 15);
+		lblTrouve.setVisible(false);
+		getContentPane().add(lblTrouve);
+		
 		JButton btnValiderAbonn = new JButton("Valider abonné");
+		btnValiderAbonn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String numAbonne = numeroAbonne.getText();
+				controleur_abonne.getAbonne(numAbonne);
+			}
+		});
 		btnValiderAbonn.setBounds(381, 126, 151, 25);
 		getContentPane().add(btnValiderAbonn);
 		
@@ -42,13 +58,18 @@ public class Fenetre_effectuer_pret extends JFrame  {
 		getContentPane().add(referenceDocument);
 		referenceDocument.setColumns(10);
 		
+		
+		
 		JButton btnPrter = new JButton("Prêter");
 		btnPrter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		btnPrter.setBounds(396, 300, 151, 25);
 		getContentPane().add(btnPrter);
+		
+		
 
 		setVisible(true);
 	}
