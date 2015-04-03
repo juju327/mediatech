@@ -16,12 +16,10 @@ import javax.swing.border.EmptyBorder;
 public class MyJFrame extends JFrame {
 
 	private JPanel contentPane;
-	private static Controleur_documents controleur_doc;
-	private static Controleur_Recherche controleur_recherche;
+	private static Controleur_document controleur_doc;
+	private static Controleur_recherche controleur_recherche;
 	private static Controleur_abonne controleur_abonne;
 	private static Controleur_emprunt controleur_emprunt;
-	
-	private static Mediatek mediatek;
 
 	/**
 	 * Launch the application.
@@ -32,11 +30,12 @@ public class MyJFrame extends JFrame {
 		
 		Parametres p = new Parametres(5, 5, 3, 15, 15); */
 		
-		mediatek = new Mediatek();
-		controleur_doc = new Controleur_documents(mediatek.getInstance());
-		controleur_recherche = new Controleur_Recherche(mediatek.getInstance());
-		controleur_abonne = new Controleur_abonne(mediatek.getInstance());
-		controleur_emprunt = new Controleur_emprunt(mediatek.getInstance());
+	
+		controleur_doc = new Controleur_document(Mediatek.getInstance());
+		controleur_recherche = new Controleur_recherche(Mediatek.getInstance());
+		controleur_abonne = new Controleur_abonne(Mediatek.getInstance());
+		controleur_emprunt = new Controleur_emprunt(Mediatek.getInstance());
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

@@ -15,9 +15,9 @@ public class Fenetre_ajouter_livre extends JFrame {
 	private JTextField champ_dateParution;
 	private JTextField champ_numeroISBN;
 	private JTextField champ_auteur;
-	private Controleur_documents controleur_doc;
+	private Controleur_document controleur_doc;
 
-	public Fenetre_ajouter_livre(Controleur_documents c) {
+	public Fenetre_ajouter_livre(Controleur_document c) {
 		controleur_doc = c;
 		setTitle("Ajouter un livre");
 		getContentPane().setLayout(null);
@@ -105,7 +105,6 @@ public class Fenetre_ajouter_livre extends JFrame {
 					if (result == JOptionPane.OK_OPTION) {
 						controleur_doc.creerLivre(titre, dateString, numISBN,
 								genre, auteurs);
-						controleur_doc.save();
 					}
 
 					// saisie invalide

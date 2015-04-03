@@ -10,29 +10,27 @@ import java.util.HashMap;
 
 public class Mediatek {
 
-	/**
-	 * liste des emprunts en cours
-	 */
+	// fichier de sérialisation
+	private static final String file_db = "data.db";
 	private ArrayList<Emprunt> emprunts;
 	private HashMap<String, Document> documents;
 	private HashMap<String, Abonne> abonnes;
-	// fichier de sérialisation
-	private static final String file_db = "data.db";
-	private Mediatek instance;
+
+	private static Mediatek instance;
 
 	private static ConcreteFactory factory;
 	private Parametres parametres;
 
-	private Controleur_documents controleur_documents;
+	private Controleur_document controleur_document;
 
-	public Mediatek() {
-		setControleur_documents(new Controleur_documents(this));
+	private Mediatek() {
+		setControleur_documents(new Controleur_document(this));
 		newDB();
 		loadDB();
 		setParametres(new Parametres(5, 5, 3, 15, 15));
 	}
 
-	public Mediatek getInstance() {
+	public static Mediatek getInstance() {
 		if (instance == null) {
 			instance = new Mediatek();
 		}
@@ -76,13 +74,13 @@ public class Mediatek {
 		this.parametres = parametres;
 	}
 
-	public Controleur_documents getControleur_documents() {
-		return controleur_documents;
+	public Controleur_document getControleur_documents() {
+		return controleur_document;
 	}
 
 	private void setControleur_documents(
-			Controleur_documents controleur_documents) {
-		this.controleur_documents = controleur_documents;
+			Controleur_document controleur_document) {
+		this.controleur_document = controleur_document;
 	}
 
 	/**
@@ -145,6 +143,7 @@ public class Mediatek {
 		Abonne abo = getFactory().creerAbonne(nom, prenom, adresse,
 				dateNaissance);
 		getAbonnes().put(abo.getNumero(), abo);
+		saveDB();
 		return abo.getNumero();
 	}
 
@@ -220,33 +219,8 @@ public class Mediatek {
 				fis = new FileInputStream(file);
 				ois = new ObjectInputStream(fis);
 
-				// numDerMonit = ois.readInt();
-
-				// on rajoute les abonnés qui existent dans le fichier à ceux
-				// qui existent
-				// déjà au lieu de tout supprimer à chaque ouverture du logiciel
-				/*
-				 * 
-				 * HashMap<String,Abonne> abo_tmp = new
-				 * HashMap<>((HashMap<String,Abonne>) ois.readObject());
-				 * for(Abonne a : abo_tmp.values() ){ abonnes.put(a.getNumero(),
-				 * a); }
-				 * 
-				 * HashMap<String,Document> doc_tmp = new
-				 * HashMap<>((HashMap<String,Document>) ois.readObject());
-				 * for(Document d : doc_tmp.values() ){
-				 * documents.put(d.getReference(), d); }
-				 */
-				/*
-				 * ArrayList<Emprunt> emp_tmp = new
-				 * ArrayList<Emprunt>((ArrayList<Emprunt>) ois.readObject());
-				 * for(int i=0; i<emp_tmp.size(); i++){
-				 * emprunts.add(emp_tmp.get(i)); }
-				 */
 				abonnes = (HashMap<String, Abonne>) ois.readObject();
 				documents = (HashMap<String, Document>) ois.readObject();
-
-				// TODO exception ici ?
 				emprunts = (ArrayList<Emprunt>) ois.readObject();
 
 				afficher();
@@ -287,18 +261,26 @@ public class Mediatek {
 		for (Document d : documents.values()) {
 			System.out.println("titre : " + d.getTitre()
 					+ " date de parution : " + d.getDateParution()
-					+ " genre : " + d.getGenre());
+					+ " genre : " + d.getGenre() + " référence : "
+					+ d.getReference());
 		}
 
 		System.out.println("\nListe d'emprunts");
 		for (int i = 0; i < emprunts.size(); i++) {
-			System.out.println("emprunt : nom, prénom de l'emprunteur "
-					+ emprunts.get(i).getEmprunteur().getNom() + " "
+			System.out.println("abonné : "
+					+ emprunts.get(i).getEmprunteur().getNom()
+					+ " "
 					+ emprunts.get(i).getEmprunteur().getPrenom()
-					+ " titre, auteur de l'emprunteur"
-					+ emprunts.get(i).getPret().getTitre() + " "
-					+ emprunts.get(i).getPret().getAuteurs().get(0) +
-					controleur_documents.dateToString(emprunts.get(i).getDateEmprunt()));
+					+ " a emprunté : "
+					+ emprunts.get(i).getPret().getTitre()
+					+ " "
+					+ emprunts.get(i).getPret().getAuteurs().get(0).getNom()
+					+ " prêt "
+					+ controleur_document.dateToString(emprunts.get(i)
+							.getDateEmprunt())
+					+ " retour : "
+					+ controleur_document.dateToString(emprunts.get(i)
+							.getDateRetour()));
 		}
 	}
 

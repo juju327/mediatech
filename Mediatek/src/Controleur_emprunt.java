@@ -1,62 +1,71 @@
 import java.util.Date;
 import java.util.Map.Entry;
 
+public class Controleur_emprunt extends Controleur {
 
-
-public class Controleur_emprunt extends Controleur{
-	
 	public Controleur_emprunt(Mediatek mediatek) {
 		super(mediatek);
 	}
-	
+
 	/**
 	 * Recherche parmi la liste des documents si la référence existe
-	 * @param reference : reference d'un document
+	 * 
+	 * @param reference
+	 *            : reference d'un document
 	 * @return true si la référence existe sinon false
 	 */
-	
-	public boolean referenceDocumentValide(String reference){
+
+	public boolean referenceDocumentValide(String reference) {
 		return getMediatek().getDocuments().containsKey(reference);
 	}
-	  
-	
+
 	/**
-	 * Recherche si le quota pour le type du document n'est pas dépassé pour l'abonné
-	 * @param numeroAbo : numéro d'un abonné
-	 * @param document : document
-	 * @return true si le quota pour le type du document n'est pas dépassé sinon false
+	 * Recherche si le quota pour le type du document n'est pas dépassé pour
+	 * l'abonné
+	 * 
+	 * @param numeroAbo
+	 *            : numéro d'un abonné
+	 * @param document
+	 *            : document
+	 * @return true si le quota pour le type du document n'est pas dépassé sinon
+	 *         false
 	 */
-	/*public boolean quotaTypeNonDepasse(String numeroAbo, Document document){
-		return true ;
-	} */
-	
+	/*
+	 * public boolean quotaTypeNonDepasse(String numeroAbo, Document document){
+	 * return true ; }
+	 */
+
 	/**
 	 * Recherche si le document est disponible
-	 * @param document 
+	 * 
+	 * @param document
 	 * @return true si le document est disponible sinon false
 	 */
-	public boolean documentDisponible(Document document){
-		if(document.isDisponible()){
+	public boolean documentDisponible(Document document) {
+		if (document.isDisponible()) {
 			return true;
-		}else{
-			return false ;
+		} else {
+			return false;
 		}
 	}
-	
+
 	/**
-	 * Recherche si le quota globale (nombre total d'emprunt) de l'abonné n'est pas dépassé grâce 
-	 * à la liste d'emprunt 
-	 * @param numeroAbo : numéro d'un abonné
+	 * Recherche si le quota globale (nombre total d'emprunt) de l'abonné n'est
+	 * pas dépassé grâce à la liste d'emprunt
+	 * 
+	 * @param numeroAbo
+	 *            : numéro d'un abonné
 	 * @return true si le quota global n'est pas dépassé sinon false
 	 */
-	public boolean quotaGlobalNonDepasse(Abonne abo){
-		if(abo.getEmprunts().size()>getMediatek().getParametres().getQuotaGlobal()){
-			return false ;
-		}else{
+	public boolean quotaGlobalNonDepasse(Abonne abo) {
+		if (abo.getEmprunts().size() > getMediatek().getParametres()
+				.getQuotaGlobal()) {
+			return false;
+		} else {
 			return true;
 		}
 	}
-	
+
 	/**
 	 * emprunte un document pour un abonné
 	 * 
@@ -65,15 +74,17 @@ public class Controleur_emprunt extends Controleur{
 	 * @param numAb
 	 *            le numéro de l'abonné
 	 */
-	public void faireEmprunt(Document doc, Abonne abonne){
+	public void faireEmprunt(Document doc, Abonne abonne) {
 		Date dateJour = new Date();
-		
-		Date dateRetour = addToDate(new Date(), getMediatek().getParametres().getTempsMaxLivre());
-			
+
+		Date dateRetour = addToDate(new Date(), getMediatek().getParametres()
+				.getTempsMaxLivre());
+
 		Emprunt emprunt = new Emprunt(doc, abonne, dateJour, dateRetour);
 		abonne.emprunter(emprunt);
 		getMediatek().addEmprunt(emprunt);
-		emprunt.getPret().setDisponible(false);		
+		emprunt.getPret().setDisponible(false);
+		save();
 	}
 
 	/**
@@ -89,9 +100,12 @@ public class Controleur_emprunt extends Controleur{
 		abonne.rendre(emprunt);
 		getMediatek().remove(emprunt);
 
-	}
-	
+		save();
 
-	
-	
+	}
+
+	public boolean verifEmprunt(String refDoc, Abonne abonne) {
+		return (referenceDocumentValide(refDoc) && quotaGlobalNonDepasse(abonne));
+	}
+
 }

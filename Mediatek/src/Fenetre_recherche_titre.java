@@ -7,11 +7,11 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 public class Fenetre_recherche_titre extends JFrame {
-	private Controleur_Recherche controleur_recherche;
+	private Controleur_recherche controleur_recherche;
 	private JTextField affichage;
 	private JTextField txtTitre;
 
-	public Fenetre_recherche_titre(Controleur_Recherche c) {
+	public Fenetre_recherche_titre(Controleur_recherche c) {
 		controleur_recherche = c;
 		setTitle("Recherche simple");
 		getContentPane().setLayout(null);

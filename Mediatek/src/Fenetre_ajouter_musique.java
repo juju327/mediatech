@@ -14,10 +14,10 @@ import javax.swing.JTextField;
 public class Fenetre_ajouter_musique extends JFrame {
 	private JTextField champ_titre;
 	private JTextField champ_dateParution;
-	private Controleur_documents controleur_doc;
+	private Controleur_document controleur_doc;
 	private JTextField champ_auteur;
 
-	public Fenetre_ajouter_musique(Controleur_documents c) {
+	public Fenetre_ajouter_musique(Controleur_document c) {
 		controleur_doc = c;
 		setTitle("Ajouter une musique");
 		getContentPane().setLayout(null);

@@ -11,9 +11,9 @@ import javax.swing.JTextField;
 public class Fenetre_effectuer_retour extends JFrame  {
 	private JTextField reference;	
 	private JTextField referenceDocument;
-	private Controleur_documents controleur_doc;
+	private Controleur_document controleur_doc;
 	
-	public Fenetre_effectuer_retour(Controleur_documents c) {
+	public Fenetre_effectuer_retour(Controleur_document c) {
 		controleur_doc = c;
 		setTitle("Effectuer un retour");
 		

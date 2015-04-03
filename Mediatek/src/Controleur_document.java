@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
-public class Controleur_documents extends Controleur {
+public class Controleur_document extends Controleur {
 
-	public Controleur_documents(Mediatek mediatek) {
+	public Controleur_document(Mediatek mediatek) {
 		super(mediatek);
 	}
 	
@@ -18,7 +18,7 @@ public class Controleur_documents extends Controleur {
 			GenreLivre genre, ArrayList<Auteur> auteurs) {
 
 		getMediatek().ajouterLivre(titre, date, numISBN, genre, auteurs);
-
+		save();
 	}
 
 	public boolean numISBNExiste(String num) {
@@ -37,6 +37,7 @@ public class Controleur_documents extends Controleur {
 			GenreMusique genre, ArrayList<Auteur> auteurs) {
 
 		getMediatek().ajouterMusique(titre, dateParution, genre, auteurs);
+		save();
 	}
 	
 	public Document getDocument(String ref){

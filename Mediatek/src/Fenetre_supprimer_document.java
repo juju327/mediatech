@@ -10,9 +10,9 @@ import javax.swing.JTextField;
 
 public class Fenetre_supprimer_document extends JFrame  {
 	private JTextField reference;	
-	private Controleur_documents controleur_doc;
+	private Controleur_document controleur_doc;
 	
-	public Fenetre_supprimer_document(Controleur_documents c) {
+	public Fenetre_supprimer_document(Controleur_document c) {
 		controleur_doc = c;
 		
 		setTitle("Supprimer un document");

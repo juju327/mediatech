@@ -3,9 +3,9 @@
 import java.util.HashMap;
 
 
-public class Controleur_Recherche extends Controleur{
+public class Controleur_recherche extends Controleur{
 
-	public Controleur_Recherche(Mediatek mediatek) {
+	public Controleur_recherche(Mediatek mediatek) {
 		super(mediatek);	
 	}
 	
