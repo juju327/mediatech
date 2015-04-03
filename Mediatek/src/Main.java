@@ -184,14 +184,19 @@ public class Main extends JFrame {
 		mnRecherche.add(mntmRechercheDocument);
 
 		// VISUALISER
-		JMenuItem mntmVisualiser = new JMenu("Visualiser");
-		mntmVisualiser.addActionListener(new ActionListener() {
+		JMenu mnVisualiser = new JMenu("Visualiser");
+		menuBar.add(mnVisualiser);
+
+		// VISUALISTER -> BASE DE DONNEES
+		JMenuItem mntmBD = new JMenuItem("Base de données");
+		mntmBD.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				Fenetre_visualiser f = new Fenetre_visualiser(controleur_doc,
+						controleur_abonne, controleur_emprunt);
 			}
 		});
-		menuBar.add(mntmVisualiser);
+		mnVisualiser.add(mntmBD);
 
 		JPopupMenu popupMenu = new JPopupMenu();
 		addPopup(this, popupMenu);

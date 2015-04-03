@@ -34,7 +34,7 @@ public class Controleur_recherche extends Controleur {
 		ArrayList<Document> documents = new ArrayList<>();
 
 		for (Document d : getMediatek().getDocuments().values()) {
-			if (d.getTitre().contains(mots)) {
+			if (d.getTitre().toLowerCase().contains(mots)) {
 				documents.add(d);
 			}
 		}
@@ -66,7 +66,7 @@ public class Controleur_recherche extends Controleur {
 	 */
 	public ArrayList<Document> rechercheParNomAuteur(String auteur) {
 		for (Auteur a : getMediatek().getAuteurs()) {
-			if (a.getNom().contains(auteur.toLowerCase())) {
+			if (a.getNom().toLowerCase().contains(auteur.toLowerCase())) {
 				return a.getAPublie();
 			}
 		}

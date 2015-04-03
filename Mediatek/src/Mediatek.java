@@ -319,6 +319,8 @@ public class Mediatek {
 		Auteur a6 = new Auteur("Lebleu");
 		Auteur a7 = new Auteur("Lenoir");
 		Auteur a8 = new Auteur("Leblanc");
+		Auteur a9 = new Auteur("Au P'tit Bonheur");
+		Auteur a10 = new Auteur("Concept'ion");
 
 		ArrayList<Auteur> aut_tmp = new ArrayList<>();
 		aut_tmp.add(a1);
@@ -329,6 +331,8 @@ public class Mediatek {
 		aut_tmp.add(a6);
 		aut_tmp.add(a7);
 		aut_tmp.add(a8);
+		aut_tmp.add(a9);
+		aut_tmp.add(a10);
 
 		setAuteurs(aut_tmp);
 
@@ -369,6 +373,11 @@ public class Mediatek {
 		Livre l18 = new Livre("Les couleurs", "01/01/1995", "18",
 				GenreLivre.Jeunesse, a8);
 
+		Musique m1 = new Musique("J'veux du soleil", "01/01/2000",
+				GenreMusique.Autre, a9);
+		Musique m2 = new Musique("Vive la conception", "01/01/2999",
+				GenreMusique.Classique, a10);
+
 		documents.put(l1.getReference(), l1);
 		documents.put(l2.getReference(), l2);
 		documents.put(l3.getReference(), l3);
@@ -387,6 +396,8 @@ public class Mediatek {
 		documents.put(l16.getReference(), l16);
 		documents.put(l17.getReference(), l17);
 		documents.put(l18.getReference(), l18);
+		documents.put(m1.getReference(), m1);
+		documents.put(m2.getReference(), m2);
 
 		Abonne ab1 = new Abonne("Nicolas", "Violette", "chez Nicolas",
 				"01/01/1995");
@@ -420,6 +431,7 @@ public class Mediatek {
 		controleur_emprunt.faireEmprunt(l13, ab3);
 		controleur_emprunt.faireEmprunt(l14, ab4);
 		controleur_emprunt.faireEmprunt(l11, ab5);
+		controleur_emprunt.faireEmprunt(m1, ab6);
 
 	}
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map.Entry;
 
@@ -53,9 +54,9 @@ public class Controleur_abonne extends Controleur {
 	public String creerAbonne(String nom, String prenom, String adresse,
 			String dateN) {
 		return getMediatek().ajouterAbonne(nom, prenom, adresse, dateN);
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * @param num
@@ -68,6 +69,14 @@ public class Controleur_abonne extends Controleur {
 	public void supprimerAbonne(String numAbo) {
 		getMediatek().supprimerAbonne(numAbo);
 		save();
-		
 	}
+
+	public ArrayList<Abonne> getAllAbonnes() {
+		ArrayList<Abonne> abonnes = new ArrayList<>();
+		for (Abonne a : getMediatek().getAbonnes().values()) {
+			abonnes.add(a);
+		}
+		return abonnes;
+	}
+
 }

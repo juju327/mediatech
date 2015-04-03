@@ -63,4 +63,13 @@ public class Controleur_document extends Controleur {
 		}
 		return false;
 	}
+
+	public ArrayList<Document> getAllDocuments() {
+		ArrayList<Document> documents = new ArrayList<>();
+		for (Document d : getMediatek().getDocuments().values()) {
+			documents.add(d);
+		}
+
+		return documents;
+	}
 }

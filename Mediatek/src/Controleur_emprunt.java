@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map.Entry;
 
@@ -121,6 +122,10 @@ public class Controleur_emprunt extends Controleur {
 			}
 		}
 		return null;
+	}
+
+	public ArrayList<Emprunt> getAllEmprunts() {
+		return (getMediatek().getEmprunts());
 	}
 
 }
