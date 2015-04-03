@@ -104,7 +104,7 @@ public class Fenetre_ajouter_livre extends JFrame {
 											+ genre.toString() + "\"", "Confirmation", JOptionPane.OK_CANCEL_OPTION);
 
 					// on crée le livre
-					if (result == JOptionPane.YES_OPTION) {
+					if (result == JOptionPane.OK_OPTION) {
 						controleur_doc.creerLivre(titre, dateString, numISBN,
 								genre, auteurs);
 						controleur_doc.save();
