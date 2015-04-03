@@ -10,7 +10,7 @@ public class Controleur_documents extends Controleur {
 				&& !auteurs.isEmpty()) {
 			// si la date est valide
 
-			if (!verifDate(date)) {
+			if (verifDate(date)) {
 				getMediatek()
 						.ajouterLivre(titre, date, numISBN, genre, auteurs);
 				return true;
