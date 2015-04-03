@@ -1,4 +1,4 @@
-
+ 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,12 +9,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class Fenetre_effectuer_retour extends JFrame  {
-	private JTextField reference;	
 	private JTextField referenceDocument;
-	private Controleur_document controleur_doc;
+	private Controleur_emprunt controleur_emprunt;
 	
-	public Fenetre_effectuer_retour(Controleur_document c) {
-		controleur_doc = c;
+	public Fenetre_effectuer_retour(Controleur_emprunt ce) {
+		controleur_emprunt = ce;
 		setTitle("Effectuer un retour");
 		
 		setBounds(250, 250, 950, 462);
@@ -34,7 +33,26 @@ public class Fenetre_effectuer_retour extends JFrame  {
 			public void actionPerformed(ActionEvent e) {
 				JFrame frame = new JFrame();
 				String ref = referenceDocument.getText();
-				int result = JOptionPane.showConfirmDialog(frame,"Ref document : " + ref);
+				
+				//Si le document existe et est emprunté par quelqu'un (on peut donc le retourner)
+				
+				if (controleur_emprunt.verifRetour(ref)) {
+					controleur_emprunt.faireRetour(ref);
+					JOptionPane.showMessageDialog(null, "Retour effectué !", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+				} else if(!controleur_emprunt.referenceDocumentValide(ref)){
+					JOptionPane
+					.showMessageDialog(null,
+							"Le document demandé n'existe pas ! Retour impossible.",
+							"Erreur de saisie",
+							JOptionPane.WARNING_MESSAGE);
+				} else if(controleur_emprunt.isDocumentDisponible(ref)){
+					JOptionPane
+					.showMessageDialog(null,
+							"Le document demandé n'est pas emprunté ! Retour impossible.",
+							"Erreur de saisie",
+							JOptionPane.WARNING_MESSAGE);
+				}
+				
 			}
 		});
 		btnPrter.setBounds(382, 216, 151, 25);

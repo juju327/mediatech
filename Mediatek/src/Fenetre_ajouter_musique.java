@@ -3,7 +3,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -28,8 +27,12 @@ public class Fenetre_ajouter_musique extends JFrame {
 		champ_titre.setColumns(10);
 
 		JLabel lblTitre = new JLabel("Titre");
-		lblTitre.setBounds(67, 80, 54, 50);
+		lblTitre.setBounds(66, 80, 54, 50);
 		getContentPane().add(lblTitre);
+
+		JLabel lblAuteur = new JLabel("Auteur");
+		lblAuteur.setBounds(66, 127, 54, 50);
+		getContentPane().add(lblAuteur);
 
 		champ_auteur = new JTextField();
 		champ_auteur.setColumns(10);
@@ -37,12 +40,12 @@ public class Fenetre_ajouter_musique extends JFrame {
 		getContentPane().add(champ_auteur);
 
 		JLabel lblDateDeParution = new JLabel("Date de sortie");
-		lblDateDeParution.setBounds(66, 161, 133, 50);
+		lblDateDeParution.setBounds(66, 182, 133, 50);
 		getContentPane().add(lblDateDeParution);
 
 		champ_dateParution = new JTextField();
 		champ_dateParution.setColumns(10);
-		champ_dateParution.setBounds(254, 177, 114, 19);
+		champ_dateParution.setBounds(255, 198, 114, 19);
 		getContentPane().add(champ_dateParution);
 
 		JLabel lblGenre = new JLabel("Genre");
@@ -72,40 +75,43 @@ public class Fenetre_ajouter_musique extends JFrame {
 				GenreMusique genre = (GenreMusique) genreMusique
 						.getSelectedItem();
 
-				ArrayList<Auteur> auteurs = new ArrayList<>();
 				// TODO faire une boucle pour récupérer les auteurs du champ
 				// texte
-
-				if (!aut.isEmpty()) {
-					Auteur auteur = new Auteur(aut);
-					auteurs.add(auteur);
-				}
 
 				JFrame frame = new JFrame();
 
 				boolean dateJuste = controleur_doc.verifDate(dateString);
 				// boolean numDispo = !controleur_doc.numISBNExiste(numISBN);
 				// contrôle de la saisie
-				if (!titre.isEmpty() && !auteurs.isEmpty()
-						&& !dateString.isEmpty() && dateJuste) {
+				if (!titre.isEmpty() && !aut.isEmpty() && !dateString.isEmpty()
+						&& dateJuste) {
 
-					// l'utilisateur confirme sa saisie
-					int result = JOptionPane
-							.showConfirmDialog(frame,
-									"Êtes-vous sûr de vouloir ajouter cette musique: Titre:\""
-											+ titre + "\" Auteur:\"" + aut
-											+ "\" Date de sortie :\""
-											+ dateString + "\" Genre : \""
-											+ genre.toString() + "\"",
-									"Confirmation",
-									JOptionPane.OK_CANCEL_OPTION);
+					Auteur auteur = new Auteur(aut);
 
-					// on crée le livre
-					if (result == JOptionPane.OK_OPTION) {
-						controleur_doc.creeMusique(titre, dateString, genre, auteurs);				
-						controleur_doc.save();
+					if (controleur_doc.musicExiste(titre, auteur)) {
+						JOptionPane
+								.showMessageDialog(null,
+										"La musique demandée existe déjà.",
+										"Erreur de saisie",
+										JOptionPane.WARNING_MESSAGE);
+
+					} else {
+
+						// l'utilisateur confirme sa saisie
+						int result = JOptionPane.showConfirmDialog(frame,
+								"Êtes-vous sûr de vouloir ajouter cette musique: Titre:\""
+										+ titre + "\" Auteur:\"" + aut
+										+ "\" Date de sortie :\"" + dateString
+										+ "\" Genre : \"" + genre.toString()
+										+ "\"", "Confirmation",
+								JOptionPane.OK_CANCEL_OPTION);
+
+						// on crée la musique
+						if (result == JOptionPane.OK_OPTION) {
+							controleur_doc.creeMusique(titre, dateString,
+									genre, auteur);
+						}
 					}
-
 					// saisie invalide
 				} else {
 
@@ -132,15 +138,12 @@ public class Fenetre_ajouter_musique extends JFrame {
 										JOptionPane.WARNING_MESSAGE);
 					}
 
-					/*if (!numDispo) {
-						JOptionPane
-								.showMessageDialog(null,
-										"Le numéro ISBN demandé existe déjà.",
-										"Erreur de saisie",
-										JOptionPane.WARNING_MESSAGE);
-					}
-					*/
-					
+					/*
+					 * if (!numDispo) { JOptionPane .showMessageDialog(null,
+					 * "Le numéro ISBN demandé existe déjà.",
+					 * "Erreur de saisie", JOptionPane.WARNING_MESSAGE); }
+					 */
+
 					// TODO vérifier si la musique existe déjà
 				}
 

@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
 
-public class MyJFrame extends JFrame {
+public class Main extends JFrame {
 
 	private JPanel contentPane;
 	private static Controleur_document controleur_doc;
@@ -27,19 +27,19 @@ public class MyJFrame extends JFrame {
 	public static void main(String[] args) {
 		/**
 		 * ici charger les paramètres
-		
-		Parametres p = new Parametres(5, 5, 3, 15, 15); */
-		
-	
+		 * 
+		 * Parametres p = new Parametres(5, 5, 3, 15, 15);
+		 */
+
 		controleur_doc = new Controleur_document(Mediatek.getInstance());
 		controleur_recherche = new Controleur_recherche(Mediatek.getInstance());
 		controleur_abonne = new Controleur_abonne(Mediatek.getInstance());
 		controleur_emprunt = new Controleur_emprunt(Mediatek.getInstance());
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MyJFrame frame = new MyJFrame();
+					Main frame = new Main();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +51,7 @@ public class MyJFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MyJFrame() {
+	public Main() {
 		setTitle("Mediatek, le meilleur de la tek");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1262, 462);
@@ -104,8 +104,8 @@ public class MyJFrame extends JFrame {
 		mntmPret.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Fenetre_effectuer_pret f = new Fenetre_effectuer_pret(controleur_emprunt, controleur_abonne,
-						controleur_doc);
+				Fenetre_effectuer_pret f = new Fenetre_effectuer_pret(
+						controleur_emprunt, controleur_abonne, controleur_doc);
 			}
 		});
 		mnDocument.add(mntmPret);
@@ -116,7 +116,7 @@ public class MyJFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Fenetre_effectuer_retour f = new Fenetre_effectuer_retour(
-						controleur_doc);
+						controleur_emprunt);
 			}
 		});
 		mnDocument.add(mntmRetour);
@@ -141,7 +141,8 @@ public class MyJFrame extends JFrame {
 		mntmAjouterAbonne.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Fenetre_ajouter_abonne f = new Fenetre_ajouter_abonne(controleur_abonne);
+				Fenetre_ajouter_abonne f = new Fenetre_ajouter_abonne(
+						controleur_abonne);
 
 			}
 		});
@@ -152,7 +153,8 @@ public class MyJFrame extends JFrame {
 		mntmsupprimerAbonne.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				Fenetre_supprimer_abonne f = new Fenetre_supprimer_abonne(
+						controleur_abonne);
 			}
 		});
 		mnAbonne.add(mntmsupprimerAbonne);
@@ -164,8 +166,8 @@ public class MyJFrame extends JFrame {
 		JMenuItem mntmRechercheAuteur = new JMenuItem("Par auteur");
 		mntmRechercheAuteur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
+				Fenetre_recherche_auteur f = new Fenetre_recherche_auteur(
+						controleur_recherche);
 			}
 		});
 		mnRecherche.add(mntmRechercheAuteur);
@@ -181,16 +183,15 @@ public class MyJFrame extends JFrame {
 		});
 		mnRecherche.add(mntmRechercheDocument);
 
-		// ADMINISTATION
-		JMenuItem mntmAdministation = new JMenu("Administration");
-		mntmAdministation.addActionListener(new ActionListener() {
+		// VISUALISER
+		JMenuItem mntmVisualiser = new JMenu("Visualiser");
+		mntmVisualiser.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-
 			}
 		});
-		menuBar.add(mntmAdministation);
+		menuBar.add(mntmVisualiser);
 
 		JPopupMenu popupMenu = new JPopupMenu();
 		addPopup(this, popupMenu);

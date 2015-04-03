@@ -15,8 +15,8 @@ public class Controleur_abonne extends Controleur {
 	 *            : numéro d'un abonné
 	 * @return true si le numéro d'abonné existe sinon false
 	 */
-	public Abonne numeroAbonneValide(String numeroAbo) {
-		return getMediatek().getAbonnes().get(numeroAbo);
+	public boolean numeroAbonneValide(String numeroAbo) {
+		return getMediatek().getAbonnes().containsKey(numeroAbo);
 	}
 
 	/**
@@ -63,5 +63,11 @@ public class Controleur_abonne extends Controleur {
 	 */
 	public Abonne getAbonne(String num) {
 		return (getMediatek().getAbonnes().get(num));
+	}
+
+	public void supprimerAbonne(String numAbo) {
+		getMediatek().supprimerAbonne(numAbo);
+		save();
+		
 	}
 }

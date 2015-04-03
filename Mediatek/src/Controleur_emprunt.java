@@ -8,18 +8,6 @@ public class Controleur_emprunt extends Controleur {
 	}
 
 	/**
-	 * Recherche parmi la liste des documents si la référence existe
-	 * 
-	 * @param reference
-	 *            : reference d'un document
-	 * @return true si la référence existe sinon false
-	 */
-
-	public boolean referenceDocumentValide(String reference) {
-		return getMediatek().getDocuments().containsKey(reference);
-	}
-
-	/**
 	 * Recherche si le quota pour le type du document n'est pas dépassé pour
 	 * l'abonné
 	 * 
@@ -41,8 +29,8 @@ public class Controleur_emprunt extends Controleur {
 	 * @param document
 	 * @return true si le document est disponible sinon false
 	 */
-	public boolean documentDisponible(Document document) {
-		if (document.isDisponible()) {
+	public boolean isDocumentDisponible(String ref) {
+		if (getMediatek().getDocuments().get(ref).isDisponible()) {
 			return true;
 		} else {
 			return false;
@@ -90,22 +78,49 @@ public class Controleur_emprunt extends Controleur {
 	/**
 	 * retourne un document d'un abonné
 	 * 
-	 * @param refDoc
+	 * @param reference
 	 *            la référence du document à rendre
-	 * @param numAb
-	 *            le numéro de l'abonné
 	 */
-	public void faireRetour(Emprunt emprunt, Abonne abonne) {
+	public void faireRetour(String reference) {
+		Emprunt emprunt = getEmprunt(reference);
 		emprunt.getPret().setDisponible(true);
-		abonne.rendre(emprunt);
+		emprunt.getEmprunteur().rendre(emprunt);
 		getMediatek().remove(emprunt);
-
 		save();
-
 	}
 
+	/**
+	 * 
+	 * @param refDoc
+	 * @param abonne
+	 * @return true si l'emprunt peut être réalisé
+	 */
 	public boolean verifEmprunt(String refDoc, Abonne abonne) {
 		return (referenceDocumentValide(refDoc) && quotaGlobalNonDepasse(abonne));
+	}
+
+	/**
+	 * 
+	 * @param refDoc
+	 * @return vérifie que le document est bien emprunté, et que le document
+	 *         existe
+	 */
+	public boolean verifRetour(String refDoc) {
+		return (referenceDocumentValide(refDoc) && !isDocumentDisponible(refDoc));
+	}
+
+	/**
+	 * 
+	 * @param reference
+	 * @return un emprunt correspondant à la référence, null sinon
+	 */
+	private Emprunt getEmprunt(String reference) {
+		for (Emprunt e : getMediatek().getEmprunts()) {
+			if (e.getPret().getReference().equals(reference)) {
+				return e;
+			}
+		}
+		return null;
 	}
 
 }

@@ -76,7 +76,6 @@ public class Fenetre_ajouter_livre extends JFrame {
 				String numISBN = champ_numeroISBN.getText();
 				GenreLivre genre = (GenreLivre) genreLivre.getSelectedItem();
 
-				ArrayList<Auteur> auteurs = new ArrayList<>();
 				// TODO faire une boucle pour récupérer les auteurs du champ
 				// texte
 
@@ -99,12 +98,11 @@ public class Fenetre_ajouter_livre extends JFrame {
 									JOptionPane.OK_CANCEL_OPTION);
 
 					Auteur auteur = new Auteur(aut);
-					auteurs.add(auteur);
 
 					// on crée le livre
 					if (result == JOptionPane.OK_OPTION) {
 						controleur_doc.creerLivre(titre, dateString, numISBN,
-								genre, auteurs);
+								genre, auteur);
 					}
 
 					// saisie invalide

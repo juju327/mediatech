@@ -7,8 +7,8 @@ public class Livre extends Document {
 	private GenreLivre genre ;
 	
 	
-	public Livre(String titre, String dateParution, String numeroISBN ,GenreLivre genre, ArrayList<Auteur> auteurs) {
-		super(titre,dateParution, auteurs);
+	public Livre(String titre, String dateParution, String numeroISBN ,GenreLivre genre, Auteur auteur) {
+		super(titre,dateParution, auteur);
 		setNumeroISBN(numeroISBN);
 		setGenre(genre);
 		createReference();

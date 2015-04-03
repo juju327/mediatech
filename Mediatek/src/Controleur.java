@@ -6,16 +6,16 @@ import java.util.Map.Entry;
 public abstract class Controleur {
 	private Mediatek mediatek;
 
-	public Mediatek getMediatek() {
+	public Controleur(Mediatek mediatek) {
+		setMediatek(mediatek);
+	}
+
+	protected Mediatek getMediatek() {
 		return mediatek;
 	}
 
 	private void setMediatek(Mediatek mediatek) {
 		this.mediatek = mediatek;
-	}
-
-	public Controleur(Mediatek mediatek) {
-		setMediatek(mediatek);
 	}
 
 	/**
@@ -61,9 +61,10 @@ public abstract class Controleur {
 
 		return date;
 	}
-	
+
 	/**
 	 * vérifie si la date saisie est bien un format valide
+	 * 
 	 * @param date
 	 * @return true si la date est valide, false sinon
 	 */
@@ -75,11 +76,21 @@ public abstract class Controleur {
 		}
 		return true;
 	}
-	
 
 	public void save() {
 		getMediatek().saveDB();
 	}
 
+	/**
+	 * Recherche parmi la liste des documents si la référence existe
+	 * 
+	 * @param reference
+	 *            : reference d'un document
+	 * @return true si la référence existe sinon false
+	 */
+
+	public boolean referenceDocumentValide(String reference) {
+		return getMediatek().getDocuments().containsKey(reference);
+	}
 
 }

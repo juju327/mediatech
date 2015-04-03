@@ -1,17 +1,15 @@
-
 import java.util.ArrayList;
 
+public class Musique extends Document {
+	private GenreMusique genre;
 
-public class Musique extends Document{
-	private GenreMusique genre ;
-	
-
-
-	public Musique(String titre, String dateParution, GenreMusique genre, ArrayList<Auteur> auteurs) {
-		super(titre, dateParution, auteurs);	
+	public Musique(String titre, String dateParution, GenreMusique genre,
+			Auteur auteur) {
+		super(titre, dateParution, auteur);
 		setGenre(genre);
+		createReference();
 	}
-	
+
 	public GenreMusique getGenre() {
 		return genre;
 	}
@@ -22,7 +20,8 @@ public class Musique extends Document{
 
 	@Override
 	protected void createReference() {
-		newReference("M-"+getTitre()+"-"+getGenre()+"-"+getDateParution());	
-		
+		newReference("M-" + getTitre() + "-" + getGenre() + "-"
+				+ getDateParution());
+
 	}
 }

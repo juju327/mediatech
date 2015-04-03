@@ -5,9 +5,10 @@ public class Controleur_document extends Controleur {
 	public Controleur_document(Mediatek mediatek) {
 		super(mediatek);
 	}
-	
+
 	/**
 	 * ordonne à mediatek d'ajouter un livre à sa collection
+	 * 
 	 * @param titre
 	 * @param date
 	 * @param numISBN
@@ -15,9 +16,9 @@ public class Controleur_document extends Controleur {
 	 * @param auteurs
 	 */
 	public void creerLivre(String titre, String date, String numISBN,
-			GenreLivre genre, ArrayList<Auteur> auteurs) {
+			GenreLivre genre, Auteur auteur) {
 
-		getMediatek().ajouterLivre(titre, date, numISBN, genre, auteurs);
+		getMediatek().ajouterLivre(titre, date, numISBN, genre, auteur);
 		save();
 	}
 
@@ -34,13 +35,32 @@ public class Controleur_document extends Controleur {
 	}
 
 	public void creeMusique(String titre, String dateParution,
-			GenreMusique genre, ArrayList<Auteur> auteurs) {
+			GenreMusique genre, Auteur auteur) {
 
-		getMediatek().ajouterMusique(titre, dateParution, genre, auteurs);
+		getMediatek().ajouterMusique(titre, dateParution, genre, auteur);
 		save();
 	}
-	
-	public Document getDocument(String ref){
+
+	public Document getDocument(String ref) {
 		return getMediatek().getDocuments().get(ref);
+	}
+
+	public void supprimerDocument(String refDoc) {
+		getMediatek().supprimerDocument(getDocument(refDoc));
+		save();
+	}
+
+	public boolean estDispo(String refDoc) {
+		return getDocument(refDoc).isDisponible();
+	}
+
+	public boolean musicExiste(String titre, Auteur auteur) {
+		for (Document d : getMediatek().getDocuments().values()) {
+			if (d.getTitre().equals(titre)
+					&& d.getAuteur().getNom().equals(auteur.getNom())) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

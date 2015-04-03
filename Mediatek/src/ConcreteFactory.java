@@ -1,4 +1,3 @@
-
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -6,16 +5,16 @@ public class ConcreteFactory extends AbstractFactory {
 
 	@Override
 	public Livre creerLivre(String titre, String dateParution,
-			String numeroISBN, GenreLivre genre, ArrayList<Auteur> auteurs) {
+			String numeroISBN, GenreLivre genre, Auteur auteur) {
 
-		Livre livre = new Livre(titre, dateParution, numeroISBN, genre, auteurs);
+		Livre livre = new Livre(titre, dateParution, numeroISBN, genre, auteur);
 		return livre;
 	}
 
 	@Override
 	public Musique creerMusique(String titre, String dateParution,
-			GenreMusique genre, ArrayList<Auteur> auteurs) {
-		Musique musique = new Musique(titre, dateParution, genre, auteurs);
+			GenreMusique genre, Auteur auteur) {
+		Musique musique = new Musique(titre, dateParution, genre, auteur);
 		return musique;
 	}
 
