@@ -75,5 +75,11 @@ public abstract class Controleur {
 		}
 		return true;
 	}
+	
+
+	public void save() {
+		getMediatek().saveDB();
+	}
+
 
 }

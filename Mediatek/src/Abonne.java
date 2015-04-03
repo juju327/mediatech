@@ -12,12 +12,12 @@ public class Abonne implements Serializable{
 	private String nom;
 	private String prenom;
 	private String adresse;
-	private Date dateNaissance;
+	private String dateNaissance;
 	private String numero;
 	private ArrayList<Emprunt> emprunts;
 	
 	// Constructor
-	public Abonne(String nom, String prenom, String adresse, Date date){
+	public Abonne(String nom, String prenom, String adresse, String date){
 		setNom(nom);
 		setPrenom(prenom);
 		setAdresse(adresse);
@@ -36,7 +36,7 @@ public class Abonne implements Serializable{
 	public String getAdresse() {
 		return adresse;
 	}
-	public Date getDateNaissance() {
+	public String getDateNaissance() {
 		return dateNaissance;
 	}
 	public String getNumero() {
@@ -51,7 +51,7 @@ public class Abonne implements Serializable{
 	private void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-	private void setDateNaissance(Date dateNaissance) {
+	private void setDateNaissance(String dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 	private void setNumero(String numero) {
@@ -79,8 +79,7 @@ public class Abonne implements Serializable{
 	 */
 	public void rendre(Emprunt emprunt){
 		emprunts.remove(emprunt);
-	}
-	
+	}	
 	
 	private void createNumeroAbo(){
 		Random random = new Random();

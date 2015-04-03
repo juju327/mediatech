@@ -5,7 +5,15 @@ public class Controleur_documents extends Controleur {
 	public Controleur_documents(Mediatek mediatek) {
 		super(mediatek);
 	}
-
+	
+	/**
+	 * ordonne à mediatek d'ajouter un livre à sa collection
+	 * @param titre
+	 * @param date
+	 * @param numISBN
+	 * @param genre
+	 * @param auteurs
+	 */
 	public void creerLivre(String titre, String date, String numISBN,
 			GenreLivre genre, ArrayList<Auteur> auteurs) {
 
@@ -24,12 +32,6 @@ public class Controleur_documents extends Controleur {
 		}
 		return false;
 	}
-
-	public void save() {
-		getMediatek().saveDB();
-	}
-
-	
 
 	public void creeMusique(String titre, String dateParution,
 			GenreMusique genre, ArrayList<Auteur> auteurs) {

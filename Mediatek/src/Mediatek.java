@@ -84,18 +84,15 @@ public class Mediatek {
 	 * @param numAb
 	 *            le numéro de l'abonné
 	 */
-	public void faireEmprunt(Document doc, Abonne abonne) {
+	public void faireEmprunt(Document doc, Abonne abonne){
 		Date dateJour = new Date();
-		// int nbJours = doc.getDureeMax();
-		int nbJours = 1;
-		// TODO remettre une méthode qui va bien !!
-		Date dateRetour = controleur_documents.addToDate(new Date(), nbJours);
-
+		
+		Date dateRetour = controleur_documents.addToDate(new Date(), getParametres().getTempsMaxLivre());
+			
 		Emprunt emprunt = new Emprunt(doc, abonne, dateJour, dateRetour);
 		abonne.emprunter(emprunt);
 		emprunts.add(emprunt);
-		emprunt.getPret().setDisponible(false);
-
+		emprunt.getPret().setDisponible(false);		
 	}
 
 	/**
@@ -162,10 +159,11 @@ public class Mediatek {
 	 * @param dateNaissance Date
 	 * @param numeroAbo String
 	 */
-	public void ajouterAbonne(String nom, String prenom, String adresse,
-			Date dateNaissance, String numeroAbo) {
-		Abonne abo = getFactory().creerAbonne(nom, prenom, adresse, dateNaissance, numeroAbo);
+	public String ajouterAbonne(String nom, String prenom, String adresse,
+			String dateNaissance) {
+		Abonne abo = getFactory().creerAbonne(nom, prenom, adresse, dateNaissance);
 		getAbonnes().put(abo.getNumero(), abo);
+		return abo.getNumero();
 	}
 	
 	

@@ -57,7 +57,7 @@ public class Fenetre_ajouter_livre extends JFrame {
 		JLabel lblGenre = new JLabel("Genre");
 		lblGenre.setBounds(67, 287, 133, 50);
 		getContentPane().add(lblGenre);
-		
+
 		JComboBox genreLivre = new JComboBox(GenreLivre.values());
 		genreLivre.setBounds(255, 300, 96, 24);
 		getContentPane().add(genreLivre);
@@ -84,9 +84,8 @@ public class Fenetre_ajouter_livre extends JFrame {
 				boolean dateJuste = controleur_doc.verifDate(dateString);
 				boolean numDispo = !controleur_doc.numISBNExiste(numISBN);
 				// contrôle de la saisie
-				if (!titre.isEmpty() && !numISBN.isEmpty()
-						&& !aut.isEmpty() && !dateString.isEmpty()
-						&& numDispo && dateJuste) {
+				if (!titre.isEmpty() && !numISBN.isEmpty() && !aut.isEmpty()
+						&& !dateString.isEmpty() && numDispo && dateJuste) {
 
 					// l'utilisateur confirme sa saisie
 					int result = JOptionPane
@@ -95,11 +94,13 @@ public class Fenetre_ajouter_livre extends JFrame {
 											+ titre + "\" Auteur:\"" + aut
 											+ "\" Date de parution:\""
 											+ dateString + "\" Genre : \""
-											+ genre.toString() + "\"", "Confirmation", JOptionPane.OK_CANCEL_OPTION);
-						
+											+ genre.toString() + "\"",
+									"Confirmation",
+									JOptionPane.OK_CANCEL_OPTION);
+
 					Auteur auteur = new Auteur(aut);
 					auteurs.add(auteur);
-					
+
 					// on crée le livre
 					if (result == JOptionPane.OK_OPTION) {
 						controleur_doc.creerLivre(titre, dateString, numISBN,
