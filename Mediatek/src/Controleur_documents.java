@@ -29,14 +29,7 @@ public class Controleur_documents extends Controleur {
 		getMediatek().saveDB();
 	}
 
-	public boolean verifDate(String date) {
-		try {
-			stringToDate(date);
-		} catch (Exception e) {
-			return false;
-		}
-		return true;
-	}
+	
 
 	public void creeMusique(String titre, String dateParution,
 			GenreMusique genre, ArrayList<Auteur> auteurs) {

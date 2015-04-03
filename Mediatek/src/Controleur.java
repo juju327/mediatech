@@ -63,27 +63,17 @@ public abstract class Controleur {
 	}
 	
 	/**
-	 * Recherche si le numéro d'abonné passé en paramètre appartient à la liste des abonnés de la médiatech.
-	 * @param numeroAbo : numéro d'un abonné
-	 * @return true si le numéro d'abonné existe sinon false
+	 * vérifie si la date saisie est bien un format valide
+	 * @param date
+	 * @return true si la date est valide, false sinon
 	 */
-	public Abonné numeroAbonneValide(String numeroAbo){
-		return mediatek.getAbonnes().get(numeroAbo) ;
-	}
-	
-	/**
-	 * Recherche s'il existe une abonné associée au nom et au prénom saisis
-	 * @param nom String 
-	 * @param prenom String
-	 * @return Abonné abonne
-	 */
-	public Abonné rechercheAboParNomPrenom(String nom, String prenom){
-		Abonné trouve = null;
-		for (Entry<String, Abonné> entry : getMediatek().getAbonnes().entrySet()) {
-			if(entry.getValue().getNom().toLowerCase().contains(nom) && (entry.getValue().getNom().toLowerCase().contains(prenom))){
-				trouve=entry.getValue();
-			}
+	public boolean verifDate(String date) {
+		try {
+			stringToDate(date);
+		} catch (Exception e) {
+			return false;
 		}
-		return trouve;
+		return true;
 	}
+
 }

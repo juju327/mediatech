@@ -18,6 +18,7 @@ public class MyJFrame extends JFrame {
 	private JPanel contentPane;
 	private static Controleur_documents controleur_doc;
 	private static Controleur_Recherche controleur_recherche;
+	private static Controleur_abonne controleur_abonne;
 
 	/**
 	 * Launch the application.
@@ -29,6 +30,7 @@ public class MyJFrame extends JFrame {
 		Parametres p = new Parametres(5, 5, 3, 15, 15);
 		controleur_doc = new Controleur_documents(new Mediatek(p));
 		controleur_recherche = new Controleur_Recherche(controleur_doc.getMediatek());
+		controleur_abonne = new Controleur_abonne(controleur_doc.getMediatek());
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -126,7 +128,7 @@ public class MyJFrame extends JFrame {
 		mnDocument.add(mntmQuitter);
 
 		// ABONNE
-		JMenu mnAbonne = new JMenu("Abonné");
+		JMenu mnAbonne = new JMenu("Abonne");
 		menuBar.add(mnAbonne);
 
 		// ABONNE -> AJOUTER
@@ -134,7 +136,7 @@ public class MyJFrame extends JFrame {
 		mntmAjouterAbonne.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Fenetre_ajouter_abonne f = new Fenetre_ajouter_abonne(controleur_doc);
+				Fenetre_ajouter_abonne f = new Fenetre_ajouter_abonne(controleur_abonne);
 
 			}
 		});

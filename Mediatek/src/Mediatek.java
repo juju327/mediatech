@@ -15,7 +15,7 @@ public class Mediatek {
 	 */
 	private ArrayList<Emprunt> emprunts;
 	private HashMap<String, Document> documents;
-	private HashMap<String, Abonné> abonnes;
+	private HashMap<String, Abonne> abonnes;
 	// fichier de sérialisation
 	private static final String file_db = "data.db";
 
@@ -35,7 +35,7 @@ public class Mediatek {
 		return documents;
 	}
 
-	public HashMap<String, Abonné> getAbonnes() {
+	public HashMap<String, Abonne> getAbonnes() {
 		return abonnes;
 	}
 
@@ -51,7 +51,7 @@ public class Mediatek {
 		this.emprunts = emprunts;
 	}
 
-	private void setAbonnes(HashMap<String, Abonné> abonnes) {
+	private void setAbonnes(HashMap<String, Abonne> abonnes) {
 		this.abonnes = abonnes;
 	}
 
@@ -84,7 +84,7 @@ public class Mediatek {
 	 * @param numAb
 	 *            le numéro de l'abonné
 	 */
-	public void faireEmprunt(Document doc, Abonné abonne) {
+	public void faireEmprunt(Document doc, Abonne abonne) {
 		Date dateJour = new Date();
 		// int nbJours = doc.getDureeMax();
 		int nbJours = 1;
@@ -106,7 +106,7 @@ public class Mediatek {
 	 * @param numAb
 	 *            le numéro de l'abonné
 	 */
-	public void faireRetour(Emprunt emprunt, Abonné abonne) {
+	public void faireRetour(Emprunt emprunt, Abonne abonne) {
 		emprunt.getPret().setDisponible(true);
 		abonne.rendre(emprunt);
 		emprunts.remove(emprunt);
@@ -164,7 +164,7 @@ public class Mediatek {
 	 */
 	public void ajouterAbonne(String nom, String prenom, String adresse,
 			Date dateNaissance, String numeroAbo) {
-		Abonné abo = getFactory().creerAbonne(nom, prenom, adresse, dateNaissance, numeroAbo);
+		Abonne abo = getFactory().creerAbonne(nom, prenom, adresse, dateNaissance, numeroAbo);
 		getAbonnes().put(abo.getNumero(), abo);
 	}
 	
@@ -180,7 +180,7 @@ public class Mediatek {
 	public void newDB() {
 
 		setDocuments(new HashMap<String, Document>());
-		setAbonnes(new HashMap<String, Abonné>());
+		setAbonnes(new HashMap<String, Abonne>());
 		setEmprunts(new ArrayList<Emprunt>());
 	}
 
@@ -249,9 +249,9 @@ public class Mediatek {
 				// déjà au lieu de tout supprimer à chaque ouverture du logiciel
 				/*
 				 * 
-				 * HashMap<String,Abonné> abo_tmp = new
-				 * HashMap<>((HashMap<String,Abonné>) ois.readObject());
-				 * for(Abonné a : abo_tmp.values() ){ abonnes.put(a.getNumero(),
+				 * HashMap<String,Abonne> abo_tmp = new
+				 * HashMap<>((HashMap<String,Abonne>) ois.readObject());
+				 * for(Abonne a : abo_tmp.values() ){ abonnes.put(a.getNumero(),
 				 * a); }
 				 * 
 				 * HashMap<String,Document> doc_tmp = new
@@ -265,7 +265,7 @@ public class Mediatek {
 				 * for(int i=0; i<emp_tmp.size(); i++){
 				 * emprunts.add(emp_tmp.get(i)); }
 				 */
-				abonnes = (HashMap<String, Abonné>) ois.readObject();
+				abonnes = (HashMap<String, Abonne>) ois.readObject();
 				documents = (HashMap<String, Document>) ois.readObject();
 
 				// TODO exception ici ?
@@ -300,7 +300,7 @@ public class Mediatek {
 	// ///
 	public void afficher() {
 		System.out.println("Liste d'abonnés \n");
-		for (Abonné a : abonnes.values()) {
+		for (Abonne a : abonnes.values()) {
 			System.out.println("nom : " + a.getNom() + " numero"
 					+ a.getNumero());
 		}

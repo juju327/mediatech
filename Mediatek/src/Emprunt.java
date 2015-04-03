@@ -6,11 +6,11 @@ import java.util.Date;
 public class Emprunt implements Serializable{
 	
 	private Document pret;
-	private Abonné emprunteur;	
+	private Abonne emprunteur;	
 	private Date dateEmprunt;
 	private Date dateRetour;
 
-	public Emprunt(Document pret, Abonné emprunteur, Date dateEmprunt, Date dateRetour){
+	public Emprunt(Document pret, Abonne emprunteur, Date dateEmprunt, Date dateRetour){
 		setPret(pret);
 		setDateEmprunt(dateEmprunt);
 		setDateRetour(dateRetour);
@@ -25,10 +25,10 @@ public class Emprunt implements Serializable{
 	private void setPret(Document pret) {
 		this.pret = pret;
 	}
-	public Abonné getEmprunteur() {
+	public Abonne getEmprunteur() {
 		return emprunteur;
 	}
-	private void setEmprunteur(Abonné emprunteur) {
+	private void setEmprunteur(Abonne emprunteur) {
 		this.emprunteur = emprunteur;
 	}
 	public Date getDateEmprunt() {

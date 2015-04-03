@@ -20,9 +20,9 @@ public class ConcreteFactory extends AbstractFactory {
 	}
 
 	@Override
-	public Abonné creerAbonne(String nom, String prenom, String adresse,
+	public Abonne creerAbonne(String nom, String prenom, String adresse,
 			Date dateNaissance, String numeroAbo) {
-		Abonné abo = new Abonné(nom, prenom, adresse, dateNaissance);
+		Abonne abo = new Abonne(nom, prenom, adresse, dateNaissance);
 		return abo;
 	}
 }

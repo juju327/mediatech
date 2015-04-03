@@ -6,7 +6,6 @@ public class Controleur_emprunt extends Controleur{
 	
 	public Controleur_emprunt(Mediatek mediatek) {
 		super(mediatek);
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**
@@ -49,7 +48,7 @@ public class Controleur_emprunt extends Controleur{
 	 * @param numeroAbo : numéro d'un abonné
 	 * @return true si le quota global n'est pas dépassé sinon false
 	 */
-	public boolean quotaGlobalNonDepasse(Abonné abo){
+	public boolean quotaGlobalNonDepasse(Abonne abo){
 		if(abo.getEmprunts().size()>getMediatek().getParametres().getQuotaGlobal()){
 			return false ;
 		}else{

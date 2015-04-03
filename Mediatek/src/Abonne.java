@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Random;
 //coucou
 
-public class Abonné implements Serializable{
+public class Abonne implements Serializable{
 
 	// ouaish
 	private String nom;
@@ -17,7 +17,7 @@ public class Abonné implements Serializable{
 	private ArrayList<Emprunt> emprunts;
 	
 	// Constructor
-	public Abonné(String nom, String prenom, String adresse, Date date){
+	public Abonne(String nom, String prenom, String adresse, Date date){
 		setNom(nom);
 		setPrenom(prenom);
 		setAdresse(adresse);

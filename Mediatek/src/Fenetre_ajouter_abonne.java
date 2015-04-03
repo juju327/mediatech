@@ -13,13 +13,13 @@ public class Fenetre_ajouter_abonne extends JFrame {
 	private JTextField champ_dateParution;
 	private JTextField champ_numeroISBN;
 	private JTextField champ_auteur;
-	private Controleur_documents controleur_doc;
+	private Controleur_abonne controleur_abonne;
 	private JTextField champ_nom;
 	private JTextField champ_prenom;
 	private JTextField champ_adresse;
 	private JTextField champ_date;
-	public Fenetre_ajouter_abonne(Controleur_documents c) {
-		controleur_doc = c;
+	public Fenetre_ajouter_abonne(Controleur_abonne c) {
+		controleur_abonne = c;
 		setTitle("Ajouter un abonné");
 		getContentPane().setLayout(null);
 		
@@ -69,9 +69,25 @@ public class Fenetre_ajouter_abonne extends JFrame {
 				
 				// TODO ici ajouter un abonne !!!!!!!
 				
+				JFrame frame = new JFrame();
 				
+				// controler si le nom prenom existent
+				Abonne abo = null;
+				abo = controleur_abonne.rechercheAboParNomPrenom(nom, prenom);
 				
-				
+				// abonne n'existe pas déjà
+				if(abo == null){
+					
+					
+				}
+				// abonne existe !
+				else {
+					JOptionPane
+					.showMessageDialog(null,
+							"La personne demandée est déjà abonnée.",
+							"Erreur de saisie",
+							JOptionPane.WARNING_MESSAGE);
+				}
 				
 				
 				
