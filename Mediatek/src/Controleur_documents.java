@@ -37,6 +37,9 @@ public class Controleur_documents extends Controleur {
 			GenreMusique genre, ArrayList<Auteur> auteurs) {
 
 		getMediatek().ajouterMusique(titre, dateParution, genre, auteurs);
-
+	}
+	
+	public Document getDocument(String ref){
+		return getMediatek().getDocuments().get(ref);
 	}
 }

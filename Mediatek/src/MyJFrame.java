@@ -20,6 +20,8 @@ public class MyJFrame extends JFrame {
 	private static Controleur_Recherche controleur_recherche;
 	private static Controleur_abonne controleur_abonne;
 	private static Controleur_emprunt controleur_emprunt;
+	
+	private static Mediatek mediatek;
 
 	/**
 	 * Launch the application.
@@ -27,12 +29,14 @@ public class MyJFrame extends JFrame {
 	public static void main(String[] args) {
 		/**
 		 * ici charger les paramètres
-		 */
-		Parametres p = new Parametres(5, 5, 3, 15, 15);
-		controleur_doc = new Controleur_documents(new Mediatek(p));
-		controleur_recherche = new Controleur_Recherche(controleur_doc.getMediatek());
-		controleur_abonne = new Controleur_abonne(controleur_doc.getMediatek());
-		controleur_emprunt = new Controleur_emprunt(controleur_doc.getMediatek());
+		
+		Parametres p = new Parametres(5, 5, 3, 15, 15); */
+		
+		mediatek = new Mediatek();
+		controleur_doc = new Controleur_documents(mediatek.getInstance());
+		controleur_recherche = new Controleur_Recherche(mediatek.getInstance());
+		controleur_abonne = new Controleur_abonne(mediatek.getInstance());
+		controleur_emprunt = new Controleur_emprunt(mediatek.getInstance());
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

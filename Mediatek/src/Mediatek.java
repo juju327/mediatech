@@ -18,17 +18,26 @@ public class Mediatek {
 	private HashMap<String, Abonne> abonnes;
 	// fichier de sérialisation
 	private static final String file_db = "data.db";
+	private Mediatek instance;
 
 	private static ConcreteFactory factory;
 	private Parametres parametres;
 
 	private Controleur_documents controleur_documents;
 
-	public Mediatek(Parametres p) {
+	public Mediatek() {
 		setControleur_documents(new Controleur_documents(this));
 		newDB();
 		loadDB();
-		setParametres(p);
+		setParametres(new Parametres(5, 5, 3, 15, 15));
+	}
+
+	public Mediatek getInstance() {
+		if (instance == null) {
+			instance = new Mediatek();
+		}
+		return instance;
+
 	}
 
 	public HashMap<String, Document> getDocuments() {
@@ -76,8 +85,6 @@ public class Mediatek {
 		this.controleur_documents = controleur_documents;
 	}
 
-
-
 	/**
 	 * crée une instance unique (singleton) de ConcreteFactory pour produire des
 	 * documents
@@ -118,23 +125,28 @@ public class Mediatek {
 				auteurs);
 		documents.put(musique.getReference(), musique);
 	}
-	
+
 	/**
 	 * Ajoute un abonné à la collection d'abonné de la mediatek
-	 * @param nom String
-	 * @param prenom String
-	 * @param adresse String String
-	 * @param dateNaissance Date
-	 * @param numeroAbo String
+	 * 
+	 * @param nom
+	 *            String
+	 * @param prenom
+	 *            String
+	 * @param adresse
+	 *            String String
+	 * @param dateNaissance
+	 *            Date
+	 * @param numeroAbo
+	 *            String
 	 */
 	public String ajouterAbonne(String nom, String prenom, String adresse,
 			String dateNaissance) {
-		Abonne abo = getFactory().creerAbonne(nom, prenom, adresse, dateNaissance);
+		Abonne abo = getFactory().creerAbonne(nom, prenom, adresse,
+				dateNaissance);
 		getAbonnes().put(abo.getNumero(), abo);
 		return abo.getNumero();
 	}
-	
-	
 
 	public void supprimerDocument(Document doc) {
 		documents.remove(doc.getReference());
@@ -265,27 +277,39 @@ public class Mediatek {
 
 	// ///
 	public void afficher() {
-		System.out.println("Liste d'abonnés \n");
+		System.out.println("Liste d'abonnés");
 		for (Abonne a : abonnes.values()) {
 			System.out.println("nom : " + a.getNom() + " numero"
 					+ a.getNumero());
 		}
 
-		System.out.println("Liste de documents\n ");
+		System.out.println("\nListe de documents");
 		for (Document d : documents.values()) {
 			System.out.println("titre : " + d.getTitre()
 					+ " date de parution : " + d.getDateParution()
 					+ " genre : " + d.getGenre());
 		}
+
+		System.out.println("\nListe d'emprunts");
+		for (int i = 0; i < emprunts.size(); i++) {
+			System.out.println("emprunt : nom, prénom de l'emprunteur "
+					+ emprunts.get(i).getEmprunteur().getNom() + " "
+					+ emprunts.get(i).getEmprunteur().getPrenom()
+					+ " titre, auteur de l'emprunteur"
+					+ emprunts.get(i).getPret().getTitre() + " "
+					+ emprunts.get(i).getPret().getAuteurs().get(0) +
+					controleur_documents.dateToString(emprunts.get(i).getDateEmprunt()));
+		}
 	}
 
 	public void addEmprunt(Emprunt emprunt) {
 		this.emprunts.add(emprunt);
-		
+
 	}
 
 	public void remove(Emprunt emprunt) {
 		this.emprunts.remove(emprunt);
-		
+
 	}
+
 }
