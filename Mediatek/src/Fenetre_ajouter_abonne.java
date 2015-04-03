@@ -77,7 +77,7 @@ public class Fenetre_ajouter_abonne extends JFrame {
 				
 				// abonne n'existe pas déjà
 				if(abo == null){
-					
+					boolean dateJuste = controleur_abonne.verifDate(date);
 					
 				}
 				// abonne existe !
