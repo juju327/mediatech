@@ -1,3 +1,5 @@
+import java.util.Map.Entry;
+
 
 
 public class Controleur_emprunt extends Controleur{
@@ -6,10 +8,6 @@ public class Controleur_emprunt extends Controleur{
 		super(mediatek);
 		// TODO Auto-generated constructor stub
 	}
-
-
-
-	
 	
 	/**
 	 * Recherche parmi la liste des documents si la référence existe
@@ -58,6 +56,8 @@ public class Controleur_emprunt extends Controleur{
 			return true;
 		}
 	}
+	
+
 	
 	
 }

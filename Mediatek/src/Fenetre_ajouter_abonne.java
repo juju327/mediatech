@@ -24,7 +24,7 @@ public class Fenetre_ajouter_abonne extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JLabel lblNom = new JLabel("Nom");
-		lblNom.setBounds(191, 104, 70, 15);
+		lblNom.setBounds(123, 104, 70, 15);
 		getContentPane().add(lblNom);
 		
 		champ_nom = new JTextField();
@@ -38,7 +38,7 @@ public class Fenetre_ajouter_abonne extends JFrame {
 		getContentPane().add(champ_prenom);
 		
 		JLabel lblPrenom = new JLabel("Prénom");
-		lblPrenom.setBounds(191, 152, 70, 15);
+		lblPrenom.setBounds(123, 152, 70, 15);
 		getContentPane().add(lblPrenom);
 		
 		champ_adresse = new JTextField();
@@ -47,7 +47,7 @@ public class Fenetre_ajouter_abonne extends JFrame {
 		getContentPane().add(champ_adresse);
 		
 		JLabel lblAdresse = new JLabel("Adresse");
-		lblAdresse.setBounds(191, 201, 70, 15);
+		lblAdresse.setBounds(123, 201, 70, 15);
 		getContentPane().add(lblAdresse);
 		
 		champ_date = new JTextField();
@@ -55,8 +55,8 @@ public class Fenetre_ajouter_abonne extends JFrame {
 		champ_date.setBounds(301, 256, 114, 19);
 		getContentPane().add(champ_date);
 		
-		JLabel lblDate = new JLabel("Prénom");
-		lblDate.setBounds(191, 258, 70, 15);
+		JLabel lblDate = new JLabel("Date de naissance");
+		lblDate.setBounds(123, 258, 138, 15);
 		getContentPane().add(lblDate);
 		
 		JButton btnCrer = new JButton("Créer");
@@ -68,6 +68,27 @@ public class Fenetre_ajouter_abonne extends JFrame {
 				String adresse = champ_adresse.getText();
 				
 				// TODO ici ajouter un abonne !!!!!!!
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			}
 		});
 		btnCrer.setBounds(477, 253, 117, 25);

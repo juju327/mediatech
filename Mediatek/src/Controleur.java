@@ -1,6 +1,7 @@
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map.Entry;
 
 public abstract class Controleur {
 	private Mediatek mediatek;
@@ -68,5 +69,21 @@ public abstract class Controleur {
 	 */
 	public Abonné numeroAbonneValide(String numeroAbo){
 		return mediatek.getAbonnes().get(numeroAbo) ;
+	}
+	
+	/**
+	 * Recherche s'il existe une abonné associée au nom et au prénom saisis
+	 * @param nom String 
+	 * @param prenom String
+	 * @return Abonné abonne
+	 */
+	public Abonné rechercheAboParNomPrenom(String nom, String prenom){
+		Abonné trouve = null;
+		for (Entry<String, Abonné> entry : getMediatek().getAbonnes().entrySet()) {
+			if(entry.getValue().getNom().toLowerCase().contains(nom) && (entry.getValue().getNom().toLowerCase().contains(prenom))){
+				trouve=entry.getValue();
+			}
+		}
+		return trouve;
 	}
 }

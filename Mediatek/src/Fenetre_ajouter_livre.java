@@ -80,17 +80,12 @@ public class Fenetre_ajouter_livre extends JFrame {
 				// TODO faire une boucle pour récupérer les auteurs du champ
 				// texte
 
-				if (!aut.isEmpty()) {
-					Auteur auteur = new Auteur(aut);
-					auteurs.add(auteur);
-				}
-
 				JFrame frame = new JFrame();
 				boolean dateJuste = controleur_doc.verifDate(dateString);
 				boolean numDispo = !controleur_doc.numISBNExiste(numISBN);
 				// contrôle de la saisie
 				if (!titre.isEmpty() && !numISBN.isEmpty()
-						&& !auteurs.isEmpty() && !dateString.isEmpty()
+						&& !aut.isEmpty() && !dateString.isEmpty()
 						&& numDispo && dateJuste) {
 
 					// l'utilisateur confirme sa saisie
@@ -101,7 +96,10 @@ public class Fenetre_ajouter_livre extends JFrame {
 											+ "\" Date de parution:\""
 											+ dateString + "\" Genre : \""
 											+ genre.toString() + "\"", "Confirmation", JOptionPane.OK_CANCEL_OPTION);
-
+						
+					Auteur auteur = new Auteur(aut);
+					auteurs.add(auteur);
+					
 					// on crée le livre
 					if (result == JOptionPane.OK_OPTION) {
 						controleur_doc.creerLivre(titre, dateString, numISBN,

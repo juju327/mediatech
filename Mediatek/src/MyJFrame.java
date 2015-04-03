@@ -134,7 +134,7 @@ public class MyJFrame extends JFrame {
 		mntmAjouterAbonne.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				Fenetre_ajouter_abonne f = new Fenetre_ajouter_abonne(controleur_doc);
 
 			}
 		});
