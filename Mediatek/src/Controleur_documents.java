@@ -2,26 +2,14 @@ import java.util.ArrayList;
 
 public class Controleur_documents extends Controleur {
 
-	public boolean creerLivre(String titre, String date, String numISBN,
-			GenreLivre genre, ArrayList<Auteur> auteurs) {
-
-		// si les champs ne sont pas vides
-		if (!titre.isEmpty() && !numISBN.isEmpty() && !numISBNExiste(numISBN)
-				&& !auteurs.isEmpty()) {
-			// si la date est valide
-
-			if (verifDate(date)) {
-				getMediatek()
-						.ajouterLivre(titre, date, numISBN, genre, auteurs);
-				return true;
-			}
-
-		}
-		return false;
-	}
-
 	public Controleur_documents(Mediatek mediatek) {
 		super(mediatek);
+	}
+
+	public void creerLivre(String titre, String date, String numISBN,
+			GenreLivre genre, ArrayList<Auteur> auteurs) {
+
+		getMediatek().ajouterLivre(titre, date, numISBN, genre, auteurs);
 
 	}
 
@@ -50,4 +38,10 @@ public class Controleur_documents extends Controleur {
 		return true;
 	}
 
+	public void creeMusique(String titre, String dateParution,
+			GenreMusique genre, ArrayList<Auteur> auteurs) {
+
+		getMediatek().ajouterMusique(titre, dateParution, genre, auteurs);
+
+	}
 }

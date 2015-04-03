@@ -1,18 +1,14 @@
 
 
-public class Controleur_emprunt {
-	private Mediatek laMediatek = new Mediatek() ;
+public class Controleur_emprunt extends Controleur{
 	
-	/**
-	 * Recherche si le quota globale (nombre total d'emprunt) de l'abonné n'est pas dépassé grâce 
-	 * à la liste d'emprunt 
-	 * @param numeroAbo : numéro d'un abonné
-	 * @return true si le quota global n'est pas dépassé sinon false
-	 */
-	public boolean quotaGlobalNonDepasse(String numeroAbo){
-		
-		return true ;
+	public Controleur_emprunt(Mediatek mediatek) {
+		super(mediatek);
+		// TODO Auto-generated constructor stub
 	}
+
+
+
 	
 	
 	/**
@@ -22,7 +18,7 @@ public class Controleur_emprunt {
 	 */
 	
 	public boolean referenceDocumentValide(String reference){
-		return laMediatek.getDocuments().containsKey(reference);
+		return getMediatek().getDocuments().containsKey(reference);
 	}
 	  
 	
@@ -46,6 +42,20 @@ public class Controleur_emprunt {
 			return true;
 		}else{
 			return false ;
+		}
+	}
+	
+	/**
+	 * Recherche si le quota globale (nombre total d'emprunt) de l'abonné n'est pas dépassé grâce 
+	 * à la liste d'emprunt 
+	 * @param numeroAbo : numéro d'un abonné
+	 * @return true si le quota global n'est pas dépassé sinon false
+	 */
+	public boolean quotaGlobalNonDepasse(Abonné abo){
+		if(abo.getEmprunts().size()>getMediatek().getParametres().getQuotaGlobal()){
+			return false ;
+		}else{
+			return true;
 		}
 	}
 	

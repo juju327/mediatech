@@ -23,7 +23,11 @@ public class MyJFrame extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		controleur_doc = new Controleur_documents(new Mediatek());
+		/**
+		 * ici charger les paramètres
+		 */
+		Parametres p = new Parametres(5, 5, 3, 15, 15);
+		controleur_doc = new Controleur_documents(new Mediatek(p));
 		controleur_recherche = new Controleur_Recherche(controleur_doc.getMediatek());
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

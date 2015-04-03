@@ -57,8 +57,8 @@ public class Fenetre_ajouter_livre extends JFrame {
 		JLabel lblGenre = new JLabel("Genre");
 		lblGenre.setBounds(67, 287, 133, 50);
 		getContentPane().add(lblGenre);
+		
 		JComboBox genreLivre = new JComboBox(GenreLivre.values());
-
 		genreLivre.setBounds(255, 300, 96, 24);
 		getContentPane().add(genreLivre);
 

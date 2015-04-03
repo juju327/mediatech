@@ -4,10 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -23,13 +20,15 @@ public class Mediatek {
 	private static final String file_db = "data.db";
 
 	private static ConcreteFactory factory;
+	private Parametres parametres;
 
 	private Controleur_documents controleur_documents;
 
-	public Mediatek() {
-		controleur_documents = new Controleur_documents(this);
+	public Mediatek(Parametres p) {
+		setControleur_documents(new Controleur_documents(this));
 		newDB();
 		loadDB();
+		setParametres(p);
 	}
 
 	public HashMap<String, Document> getDocuments() {
@@ -58,6 +57,23 @@ public class Mediatek {
 
 	private void setDocuments(HashMap<String, Document> documents) {
 		this.documents = documents;
+	}
+
+	public Parametres getParametres() {
+		return parametres;
+	}
+
+	private void setParametres(Parametres parametres) {
+		this.parametres = parametres;
+	}
+
+	public Controleur_documents getControleur_documents() {
+		return controleur_documents;
+	}
+
+	private void setControleur_documents(
+			Controleur_documents controleur_documents) {
+		this.controleur_documents = controleur_documents;
 	}
 
 	/**
@@ -137,6 +153,22 @@ public class Mediatek {
 				auteurs);
 		documents.put(musique.getReference(), musique);
 	}
+	
+	/**
+	 * Ajoute un abonné à la collection d'abonné de la mediatek
+	 * @param nom String
+	 * @param prenom String
+	 * @param adresse String String
+	 * @param dateNaissance Date
+	 * @param numeroAbo String
+	 */
+	public void ajouterAbonne(String nom, String prenom, String adresse,
+			Date dateNaissance, String numeroAbo) {
+		Abonné abo = getFactory().creerAbonne(nom, prenom, adresse, dateNaissance, numeroAbo);
+		getAbonnes().put(abo.getNumero(), abo);
+	}
+	
+	
 
 	public void supprimerDocument(Document doc) {
 		documents.remove(doc.getReference());
